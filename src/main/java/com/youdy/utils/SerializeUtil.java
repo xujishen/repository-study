@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public final class SerializeUtil {
 	
-	static Logger logger = Logger.getLogger(SerializeUtil.class.toGenericString());
+	static Logger logger = Logger.getLogger(SerializeUtil.class.toString());
 	
 	/**
 	 * 序列化对象 - 将JVM内存中的java对象序列为可被外部识别的byte数组

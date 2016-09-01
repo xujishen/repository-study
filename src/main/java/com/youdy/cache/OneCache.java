@@ -19,7 +19,7 @@ public class OneCache implements Serializable {
 	// 无参构造方法
 	public OneCache() {
 		if (cache == null) {
-			cache = new Jedis("10.128.7.111", 6379);
+			cache = new Jedis("127.0.0.1", 6379);
 			//cache.auth("xujishen");
 		}
 	}
