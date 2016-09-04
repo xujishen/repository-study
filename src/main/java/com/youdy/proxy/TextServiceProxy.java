@@ -4,7 +4,7 @@ import com.youdy.reflect.TestCallback;
 
 import net.sf.cglib.proxy.Enhancer;
 
-public class TextServiceProxy <T, V, A, B, C> {
+public class TextServiceProxy <T> {
 	private T target;
 	
 	public Object setTarget(T target) {

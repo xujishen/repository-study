@@ -9,8 +9,8 @@ public class TestCallback implements MethodInterceptor {
 
 	@Override
 	public Object intercept(Object target, Method methid, Object[] args, MethodProxy proxy) throws Throwable {
-		methid.invoke(target, args);
-		return null;
+		System.out.println("com.youdy.reflect.TestCallback.intercept(Object, Method, Object[], MethodProxy)");
+		return proxy.invokeSuper(target, args);
 	}
 
 }
