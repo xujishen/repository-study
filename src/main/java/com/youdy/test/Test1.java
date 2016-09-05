@@ -19,7 +19,7 @@ public class Test1 {
 				
 				for (int j = i + 1; j < len; j ++) {
 					int nextCh = chars[j];
-					//457324852
+					// 冒泡
 					if(nextCh > ch )  {
 						chars[j] = chars[i];
 						chars[i] = (char) nextCh;
