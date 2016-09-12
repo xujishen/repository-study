@@ -28,6 +28,9 @@ public final class SerializeUtil {
 	 * @return
 	 */
 	public static <T> byte[] doSerialize(T t) {
+		if (t == null) {
+			return null;
+		}
 		ByteArrayOutputStream baos = null;
 		ObjectOutputStream oos = null;
 		try {
@@ -64,6 +67,9 @@ public final class SerializeUtil {
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T unSerialize(byte ... bytes) {
+		if (bytes == null || bytes.length < 1) {
+			return null;
+		}
 		ByteArrayInputStream bais = null;
 		ObjectInputStream ois = null;
 		try {
