@@ -19,7 +19,7 @@ public class OneCache implements Serializable {
 	// 无参构造方法
 	public OneCache() {
 		if (cache == null) {
-			cache = new Jedis("127.0.0.1", 6379);
+			cache = new Jedis("10.128.7.111", 6379);
 			//cache.auth("xujishen");
 		}
 	}
@@ -115,6 +115,7 @@ public class OneCache implements Serializable {
 			//onec.set("user:" + ub.getUserId(), SerializeUtil.doSerialize(ub), "nx", "ex", 60 * 60);
 			byte[] bytes = onec.get("user:" + i);
 			UserBean u = (UserBean) SerializeUtil.unSerialize(bytes);
+			System.out.println(u);
 		}
 	}
 
