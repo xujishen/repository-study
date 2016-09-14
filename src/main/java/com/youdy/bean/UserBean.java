@@ -2,6 +2,16 @@ package com.youdy.bean;
 
 import java.util.Date;
 
+/**
+ * 用户实体类
+ * @File: UserBean.java
+ * @package com.youdy.bean
+ * @author 宿继申 
+ * @date: 2016年9月14日 上午10:09:46
+ * @version 1.0
+ * @Copyright (C) 2008-2016 www.oneapm.com. all rights reserved.
+ *
+ */
 public class UserBean extends CommonBean implements Comparable<UserBean> {
 
 	private static final long serialVersionUID = 1438638120130533150L;
