@@ -3,6 +3,7 @@ package com.youdy;
 import java.lang.reflect.Proxy;
 import java.util.concurrent.ExecutorService;
 
+import com.youdy.bean.UserBean;
 import com.youdy.proxy.ITestService;
 import com.youdy.proxy.MethodListener;
 import com.youdy.proxy.MethodListenerImpl;
@@ -29,7 +30,12 @@ public class Test {
 			
 			ExecutorService executorService = null;
 			
-			//Fix
-			
+			XYZ u = new XYZ();
+			Comparable<? super XYZ> uc = (Comparable<? super XYZ>) u;
+			uc.compareTo(null);
 	}
+}
+
+class XYZ {
+	
 }
