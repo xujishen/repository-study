@@ -113,9 +113,9 @@ public class OneCache implements Serializable {
 			ub.setCreatorName("admin");
 			//onec.set("user:" + ub.getUserId(), "Hello, I am the key " + i + ", how are u a ?!!  My baby " + i, "nx", "ex", 60 * 60);
 			//onec.set("user:" + ub.getUserId(), SerializeUtil.doSerialize(ub), "nx", "ex", 60 * 60);
-			byte[] bytes = onec.get("user:" + i);
-			UserBean u = (UserBean) SerializeUtil.unSerialize(bytes);
-			System.out.println(u);
+			//byte[] bytes = onec.get("user:" + i);
+			//UserBean u = (UserBean) SerializeUtil.unSerialize(bytes);
+			//System.out.println(u);
 		}
 	}
 
