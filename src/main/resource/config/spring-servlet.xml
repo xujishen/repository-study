@@ -41,7 +41,7 @@
 	</bean>
      
      <!-- 加载属性文件 -->
-     <context:property-placeholder location="classpath*:resource/config/jdbc.properties" />
+     <context:property-placeholder location="classpath*:config/jdbc.properties" />
      
      <bean id="dataSource" destroy-method="close"
 		class="org.apache.commons.dbcp.BasicDataSource">
@@ -57,6 +57,6 @@
 	<!-- 配置mybitasSqlSessionFactoryBean -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:resource/config/mybatis-config.xml"></property>
+		<property name="configLocation" value="classpath:config/mybatis-config.xml"></property>
 	</bean>
 </beans>
