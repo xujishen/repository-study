@@ -1,6 +1,11 @@
 package com.youdy;
 
 import java.lang.reflect.Proxy;
+import java.util.ArrayList;
+import java.util.*;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 
 import com.youdy.bean.UserBean;
@@ -13,7 +18,7 @@ import com.youdy.reflect.MethodInvocationHandler;
 
 public class Test {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 			MethodListener lis = new MethodListenerImpl();
 			
 			MethodInvocationHandler<MethodListener> handler = new MethodInvocationHandler(lis);
@@ -30,12 +35,39 @@ public class Test {
 			
 			ExecutorService executorService = null;
 			
-			XYZ u = new XYZ();
-			Comparable<? super XYZ> uc = (Comparable<? super XYZ>) u;
-			uc.compareTo(null);
+		int n = 18;
+			final CountDownLatch cdl = new CountDownLatch(n);
+			
+			for (int i = 1; i <= n; i ++) {
+				final int x = i;
+				new Thread(new Runnable() {
+					public void run() {
+						//System.out.println("I am the" + x + " nd thread ! ");
+						cdl.countDown();
+					}
+				}).start();
+			}
+			cdl.await();
+			System.out.println("All the threads have been executed ! ");
+			
+			
+			final CyclicBarrier cb = new CyclicBarrier(n);
+			for (int i = 1; i <= n; i ++) {
+				final int x = i;
+				new Thread(new Runnable() {
+					public void run() {
+						try {
+							cb.await();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						//System.out.println("The " + x + "nd thread has been arrived ! ");
+					}
+				}).start();
+			}
+			System.out.println("All the threads arrived ! ");
+			
+			
+			
 	}
-}
-
-class XYZ {
-	
 }
