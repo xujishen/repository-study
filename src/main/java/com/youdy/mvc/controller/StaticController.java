@@ -6,8 +6,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.logging.impl.Log4JLogger;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,9 +19,9 @@ import com.youdy.mvc.controller.common.CommonController;
 @Controller
 @SuppressWarnings("serial")
 public class StaticController extends CommonController {
-	//DEFAULT_LOGGER_NAME
-	//private static final Logger LOGGER = Logger.getLogger(StaticController.class);
-	Log LOGGER = LogFactory.getLog(StaticController.class);
+	
+	private static final Log LOGGER = LogFactory.getLog(StaticController.class.getClass());
+
 	@RequestMapping(value = "/{pageId}/gotoPage.htmls")
 	public ModelAndView gotoPage(HttpServletRequest request, @PathVariable(value = "pageId") String pageId, ModelMap model) {
 		String page = StaticPage.COMMON_HTML.getPath();
@@ -33,7 +31,7 @@ public class StaticController extends CommonController {
 					
 				}
 			}
-			LOGGER.info("进入" + page + "页面 !");
+			LOGGER.debug("进入" + page + "页面 !");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
