@@ -22,4 +22,36 @@ public class CommonController implements Serializable {
 	public static final String DEFAULT_LOGGER_NAME = "DEFAULT_LOG";
 	
 	// public static final String common_result_view = "result";
+	
+	public enum StaticPage {
+		COMMON_HTML("common", "common/common", "公共HTML页面");
+		
+		private String pageId;
+		private String path;
+		private String comment;
+		StaticPage(final String pageId, final String path, final String comment) {
+			this.path = path;
+			this.comment = comment;
+			this.pageId = pageId;
+		}
+		public String getPath() {
+			return path;
+		}
+		public void setPath(String path) {
+			this.path = path;
+		}
+		public String getComment() {
+			return comment;
+		}
+		public void setComment(String comment) {
+			this.comment = comment;
+		}
+		public String getPageId() {
+			return pageId;
+		}
+		public void setPageId(String pageId) {
+			this.pageId = pageId;
+		}
+		
+	}
 }
