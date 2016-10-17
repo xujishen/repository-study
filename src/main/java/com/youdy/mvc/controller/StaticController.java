@@ -20,8 +20,8 @@ import com.youdy.mvc.controller.common.CommonController;
 @SuppressWarnings("serial")
 public class StaticController extends CommonController {
 	
-	private static final Log LOGGER = LogFactory.getLog(StaticController.class.getClass());
-
+	private static final Log LOGGER = LogFactory.getLog(DEFAULT_LOGGER_NAME);
+	
 	@RequestMapping(value = "/{pageId}/gotoPage.htmls")
 	public ModelAndView gotoPage(HttpServletRequest request, @PathVariable(value = "pageId") String pageId, ModelMap model) {
 		String page = StaticPage.COMMON_HTML.getPath();

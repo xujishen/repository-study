@@ -19,7 +19,7 @@ public class CommonController implements Serializable {
 
 	private static final long serialVersionUID = -6746155676990970786L;
 	
-	public static final String DEFAULT_LOGGER_NAME = "DEFAULT_LOG";
+	public static final String DEFAULT_LOGGER_NAME = "COMMON_LOG";
 	
 	// public static final String common_result_view = "result";
 	
