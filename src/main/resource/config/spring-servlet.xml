@@ -44,15 +44,16 @@
      <!-- 加载属性文件 -->
      <context:property-placeholder location="classpath*:config/jdbc.properties" />
      
-     <bean id="dataSource" destroy-method="close"
-		class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="${mysql.jdbc.driverClassName}"/>
-		<property name="url" value="${mysql.jdbc.url}"/>
-		<property name="username" value="${mysql.jdbc.username}"/>
-		<property name="password" value="${mysql.jdbc.password}"/>
-		<property name="maxActive" value="${mysql.jdbc.maxActive}"/>
-		<property name="maxIdle" value="${mysql.jdbc.maxIdle}"/>
-		<property name="maxWait" value="${mysql.jdbc.maxWait}"/>
+     <bean id="dataSource" destroy-method="close" class="com.alibaba.druid.pool.DruidDataSource" init-method="init">
+		<!-- class="org.apache.commons.dbcp.BasicDataSource" -->
+		<property name="driverClassName" value="${db.jdbc.driverClassName}"/>
+		<property name="url" value="${db.jdbc.url}"/>
+		<property name="username" value="${db.jdbc.username}"/>
+		<property name="password" value="${db.jdbc.password}"/>
+		<property name="maxActive" value="${db.jdbc.maxActive}"/>
+		<property name="maxIdle" value="${db.jdbc.maxIdle}"/>
+		<property name="maxWait" value="${db.jdbc.maxWait}"/>
+		<property name="validationQuery" value="${db.jdbc.validationQuery}" />
 	</bean>
 	
 	<!-- 配置mybitasSqlSessionFactoryBean -->

@@ -2,6 +2,7 @@ package com.youdy.mvc.controller.common;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -21,10 +22,22 @@ public class CommonController implements Serializable {
 	
 	public static final String DEFAULT_LOGGER_NAME = "COMMON_LOG";
 	
-	// public static final String common_result_view = "result";
+	public String getAccessPagePath(String pageId) {
+		if (StringUtils.isEmpty(pageId)) {
+			return "";
+		}
+		StaticPage[] staticPages = StaticPage.values();
+		for (StaticPage staticPage : staticPages) {
+			if (StringUtils.equals(pageId, staticPage.getPageId())) {
+				return staticPage.getPath();
+			}
+		}
+		return "";
+	}
 	
 	public enum StaticPage {
-		COMMON_HTML("common", "common/common", "公共HTML页面");
+		COMMON_HTML("common", "common/common", "公共HTML页面"),
+		AREA_PAGE("area", "system/area/areaManage", "区域管理页面");
 		
 		private String pageId;
 		private String path;

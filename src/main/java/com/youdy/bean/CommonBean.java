@@ -86,5 +86,12 @@ public class CommonBean implements Serializable, Cloneable {
 	public void setUpdatorName(String updatorName) {
 		this.updatorName = updatorName;
 	}
+
+	@Override
+	public String toString() {
+		return "CommonBean [id=" + id + ", createTime=" + createTime + ", creator=" + creator + ", creatorName="
+				+ creatorName + ", updateTime=" + updateTime + ", updator=" + updator + ", updatorName=" + updatorName
+				+ "]";
+	}
 	
 }

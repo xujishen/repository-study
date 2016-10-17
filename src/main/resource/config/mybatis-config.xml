@@ -5,6 +5,8 @@
     <typeAliases>
     	<!-- 用户 -->
         <typeAlias alias="UserBean" type="com.youdy.bean.UserBean"/>
+    	<!-- 区域 -->
+        <typeAlias alias="SysAreaBeam" type="com.youdy.bean.SysAreaBeam"/>
     </typeAliases> 
     
 </configuration>

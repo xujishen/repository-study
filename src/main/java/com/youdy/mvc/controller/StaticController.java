@@ -2,10 +2,8 @@ package com.youdy.mvc.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.commons.logging.impl.Log4JLogger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,17 +22,8 @@ public class StaticController extends CommonController {
 	
 	@RequestMapping(value = "/{pageId}/gotoPage.htmls")
 	public ModelAndView gotoPage(HttpServletRequest request, @PathVariable(value = "pageId") String pageId, ModelMap model) {
-		String page = StaticPage.COMMON_HTML.getPath();
-		try {
-			if (StringUtils.isNotEmpty(pageId)) {
-				if (StaticPage.COMMON_HTML.getPageId().equals(pageId)) {
-					
-				}
-			}
-			LOGGER.debug("进入" + page + "页面 !");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		String page = getAccessPagePath(pageId);
+		LOGGER.debug("进入" + page + "页面 !");
 		return new ModelAndView(page, model);
 	}
 	
