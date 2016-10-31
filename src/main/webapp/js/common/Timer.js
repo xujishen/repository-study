@@ -1,7 +1,7 @@
 /**
  * 定时器, 兼容FF IE CHROME浏览器及其各版本实现
  * H5规范中的requestAnimationFrame
- * 若未实现requestAnimationFrame, 则默认执行javascript原生的setTimeout
+ * 若未实现requestAnimationFrame, 则默认执行浏览器原生setTimeout
  */
 window.requestNextAnimationFrame = (function() {
 	var originalWebkitMethod,
