@@ -2,9 +2,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>欢迎页面</title>
+<title>Your Test</title>
+	<script type="text/javascript" src="/yourtest/js/common/common.js"></script>	
+	<script type="text/javascript" src="/yourtest/js/common/PageUtil.js"></script>	
 </head>
 <body>
  what a fuck man!
+ 	<div>
+ 		<button id="areaMng">区域管理</button>
+ 	</div>
 </body>
 </html>
+<script type="text/javascript">
+$().ready(function() {
+	$('body').on('click', '#areaMng', function() {
+		PageUtil.gotoPage("area");
+	});
+});
+</script>
