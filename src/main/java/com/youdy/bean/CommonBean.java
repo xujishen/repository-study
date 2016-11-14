@@ -30,6 +30,10 @@ public class CommonBean implements Serializable, Cloneable {
 	private Integer updator;
 	
 	private String updatorName;
+	
+	private Integer pageNumber;
+	
+	private Integer pageCnt;
 
 	public Integer getId() {
 		return id;
@@ -85,6 +89,22 @@ public class CommonBean implements Serializable, Cloneable {
 
 	public void setUpdatorName(String updatorName) {
 		this.updatorName = updatorName;
+	}
+
+	public Integer getPageNumber() {
+		return pageNumber;
+	}
+
+	public void setPageNumber(Integer pageNumber) {
+		this.pageNumber = pageNumber;
+	}
+
+	public Integer getPageCnt() {
+		return pageCnt;
+	}
+
+	public void setPageCnt(Integer pageCnt) {
+		this.pageCnt = pageCnt;
 	}
 
 	@Override

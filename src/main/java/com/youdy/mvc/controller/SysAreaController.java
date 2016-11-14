@@ -1,26 +1,35 @@
 package com.youdy.mvc.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.youdy.bean.SysAreaBean;
 import com.youdy.mvc.controller.common.CommonController;
+import com.youdy.mvc.service.SysAreaService;
 
 @RequestMapping(value = "/area")
 @Controller
 public class SysAreaController extends CommonController {
 
 	private static final long serialVersionUID = -5638731468974812824L;
+	
+	@Autowired
+	@Qualifier(value="areaService")
+	SysAreaService areaService;
 	
 	@RequestMapping(value = "/getAreaTypes")
 	public String getAreaTypes() {
@@ -33,15 +42,19 @@ public class SysAreaController extends CommonController {
 	 * @param body
 	 * @return
 	 */
-	@RequestMapping(value = "/searchAreaData.htmmls", method = RequestMethod.POST)
+	@RequestMapping(value = "/searchAreaData.htmls", method = RequestMethod.POST)
+	@ResponseBody
 	public String searchAreaData(HttpServletRequest req, @RequestBody String body)
 	{
-		Map<String, Object> resultMap = new HashMap<String, Object>();
+		Map<String, Object> resultMap = new HashMap<String, Object>(10);
 		try
 		{
 			if (StringUtils.isNotEmpty(body))
 			{
-				SysAreaBean areaBeam = (SysAreaBean) new Gson().fromJson(body, SysAreaBean.class);
+				SysAreaBean areaBean = (SysAreaBean) new Gson().fromJson(body, SysAreaBean.class);
+				
+				List<SysAreaBean> list = areaService.searchAreas(areaBean);
+				resultMap.put("list", list);
 			}
 			else
 			{

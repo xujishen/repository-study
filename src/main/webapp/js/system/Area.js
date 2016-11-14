@@ -18,7 +18,7 @@
 		datas: {
 			areaList: [],
 			areaBean: new Object(),
-			modelName: '/area'
+			modelName: '/area'			
 		},
 		
 		/**
@@ -32,6 +32,7 @@
 				var bean = new Area();
 				bean.areaSearchName = areaSearchName;
 				bean.areaLevel = areaLevel;
+				console.log(bean.pageNumber);
 				AreaService.datas.areaBean = bean;
 			}
 		},
@@ -43,11 +44,15 @@
 			this.buildAreaBean('s');
 			
 			$.ajax({
-				url: _CONTEXTPATH + AreaService.datas.modelName + '/',
+				url: _CONTEXTPATH + AreaService.datas.modelName + '/searchAreaData.htmls',
 				type: 'POST',
+				contentType: "application/json", 
 				data: JSON.stringify(AreaService.datas.areaBean),
 				success: function(resp) {
-					
+					//console.log(resp);
+				},
+				error: function(data) {
+					console.log(data);
 				}
 			});
 			
@@ -62,20 +67,22 @@
 		
 	};
 	
-		/**
-		 * 区域对象
-		 */
-		function Area() {
-			this.areaId;
-			this.areaName;
-			this.areaSearchName;
-			this.areaCode;
-			this.parentID;
-			this.areaLevel;
-			this.createTime;
-			this.status;
-		};
-		/*Area.prototype.setAreaId = function(val) {
-			this.areaId = val;
-		};*/
+	/**
+	 * 区域对象
+	 */
+	function Area() {
+		this.areaId;
+		this.areaName;
+		this.areaSearchName;
+		this.areaCode;
+		this.parentID;
+		this.areaLevel;
+		this.createTime;
+		this.status;
+	};
+
+	Area.prototype = new CommonBean();
+	/*Area.prototype.setAreaId = function(val) {
+		this.areaId = val;
+	};*/
 	
