@@ -8,13 +8,48 @@
 </head>
 <body>
 	<!-- 操作区 -->
-	<div id="areaOperation">
+	<span>操作区</span>
+	<div id="areaSearch">
 		<table>
-			
+			<tr>
+				<td>城市名称: </td>
+				<td><input type="text" id="s_areaName" name="s_areaName" /></td>
+				
+				<td>城市级别: </td>
+				<td>
+					<select id="s_areaLevel" name="s_areaName">
+						<option value="">--全部--</option>
+						<option value="1">省(直辖市)</option>
+						<option value="2">市</option>
+						<option value="3">区(县)</option>
+						<option value="4">乡镇(街道)</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button id="searchButton">查询</button>
+				</td>
+			</tr>
 		</table>
 	</div>
 	<!-- 显示区 -->
+	<span>区域列表</span>
 	<div id="areaList">
+		<table>
+			<thead>
+				<th><input type="checkbox" id="areaList_checkAll" /></th>
+				<th>序号</th>
+				<th>城市名称</th>
+				<th>城市类型</th>
+				<th>当前状态</th>
+				<th>创建时间</th>
+			</thead>
+			
+			<tbody id="areaList_tbody">
+			
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>

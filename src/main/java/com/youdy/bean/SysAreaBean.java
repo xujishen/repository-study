@@ -2,7 +2,7 @@ package com.youdy.bean;
 
 /**
  * 系统区域实体Bean
- * @File: SysAreaBeam.java
+ * @File: SysAreaBean.java
  * @package com.youdy.bean
  * @author 宿继申 
  * @date: 2016年10月17日 下午3:53:21
@@ -10,7 +10,7 @@ package com.youdy.bean;
  * @Copyright (C) 2008-2016 www.oneapm.com. all rights reserved.
  *
  */
-public class SysAreaBeam extends CommonBean {
+public class SysAreaBean extends CommonBean {
 
 	private static final long serialVersionUID = -5505278375125054618L;
 	
@@ -21,6 +21,9 @@ public class SysAreaBeam extends CommonBean {
 	private Integer areaLevel;
 	private Integer countryID;
 	private Short status;
+	
+	private transient String areaSearchName;
+	
 	//private Date createTime;
 	public Integer getAreaID() {
 		return areaID;
@@ -65,6 +68,12 @@ public class SysAreaBeam extends CommonBean {
 		this.status = status;
 	}
 	
+	public String getAreaSearchName() {
+		return areaSearchName;
+	}
+	public void setAreaSearchName(String areaSearchName) {
+		this.areaSearchName = areaSearchName;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -81,7 +90,7 @@ public class SysAreaBeam extends CommonBean {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		SysAreaBeam other = (SysAreaBeam) obj;
+		SysAreaBean other = (SysAreaBean) obj;
 		if (areaID == null) {
 			if (other.areaID != null)
 				return false;
@@ -96,7 +105,7 @@ public class SysAreaBeam extends CommonBean {
 	}
 	@Override
 	public String toString() {
-		return "SysAreaBeam [areaID=" + areaID + ", areaName=" + areaName + ", areaCode=" + areaCode + ", parentID="
+		return "SysAreaBean [areaID=" + areaID + ", areaName=" + areaName + ", areaCode=" + areaCode + ", parentID="
 				+ parentID + ", areaLevel=" + areaLevel + ", countryID=" + countryID + ", status=" + status + "]";
 	}
 	

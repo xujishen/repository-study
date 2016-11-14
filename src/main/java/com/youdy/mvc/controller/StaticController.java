@@ -2,8 +2,6 @@ package com.youdy.mvc.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,8 +15,6 @@ import com.youdy.mvc.controller.common.CommonController;
 @Controller
 @SuppressWarnings("serial")
 public class StaticController extends CommonController {
-	
-	private static final Log LOGGER = LogFactory.getLog(DEFAULT_LOGGER_NAME);
 	
 	@RequestMapping(value = "/{pageId}/gotoPage.htmls")
 	public ModelAndView gotoPage(HttpServletRequest request, @PathVariable(value = "pageId") String pageId, ModelMap model) {

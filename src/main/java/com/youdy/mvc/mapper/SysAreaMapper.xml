@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="com.youdy.mvc.mapper.SysAreaMapper">
+	
+	<!-- 查询区域数据 -->
+	<select id="" parameterType="SysAreaBean" resultType="SysAreaBean">
+		select 
+		* 
+		from SYS_BASE_AREA t
+		where 1 = 1
+		<if test="areaLevel != null and areaLevel != ''">
+			AND t.areaLevel = #{areaLevel}
+		</if>
+		<if test="areaSearchName != null and areaSearchName != ''">
+			AND t.areaName like CONCAT('%', #{areaSearchName}, '%')
+		</if>
+	</select>
+	
+</mapper>

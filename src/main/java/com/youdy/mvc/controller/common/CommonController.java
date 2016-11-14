@@ -3,6 +3,8 @@ package com.youdy.mvc.controller.common;
 import java.io.Serializable;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -21,6 +23,12 @@ public class CommonController implements Serializable {
 	private static final long serialVersionUID = -6746155676990970786L;
 	
 	public static final String DEFAULT_LOGGER_NAME = "COMMON_LOG";
+	
+	public static final int EXCEPTION_CODE = -1;	// controller请求异常返回代码
+	
+	public static final int SUCCESS_CODE = 1;		// controller请求成功返回代码
+	
+	public static final Log LOGGER = LogFactory.getLog(DEFAULT_LOGGER_NAME);
 	
 	public String getAccessPagePath(String pageId) {
 		if (StringUtils.isEmpty(pageId)) {

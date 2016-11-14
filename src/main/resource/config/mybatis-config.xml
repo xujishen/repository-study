@@ -2,11 +2,14 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<mappers>
+		<mapper resource="com/youdy/mvc/mapper/SysAreaMapper.xml" />
+	</mappers>
     <typeAliases>
     	<!-- 用户 -->
         <typeAlias alias="UserBean" type="com.youdy.bean.UserBean"/>
     	<!-- 区域 -->
-        <typeAlias alias="SysAreaBeam" type="com.youdy.bean.SysAreaBeam"/>
+        <typeAlias alias="SysAreaBean" type="com.youdy.bean.SysAreaBean"/>
     </typeAliases> 
     
 </configuration>

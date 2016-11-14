@@ -28,7 +28,7 @@
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="classpath*:resource/mapper"/>
+		<property name="basePackage" value="com.youdy.mvc.mapper"/>
        	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	</bean>
 	
