@@ -18,7 +18,7 @@
 		datas: {
 			areaList: [],
 			areaBean: new Object(),
-			modelName: '/area'			
+			modelName: '/area'
 		},
 		
 		/**
