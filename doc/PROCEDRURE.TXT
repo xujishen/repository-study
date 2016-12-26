@@ -1,0 +1,18 @@
+DELIMITER $
+CREATE PROCEDURE P_User_Batch_Insert()
+
+BEGIN
+    DECLARE i INT;
+    set i = 1;
+    
+    TRUNCATE TABLE user_info;
+
+    WHILE i <= 1000 DO
+        INSERT INTO user_info VALUES (1000+i, CONCAT('User', i), i % 2, NOW());
+        SET i = i + 1;
+    END WHILE;
+
+END;
+
+$
+DELIMITER ;
