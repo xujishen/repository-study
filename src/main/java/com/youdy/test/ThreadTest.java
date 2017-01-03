@@ -30,14 +30,14 @@ public class ThreadTest {
 	}
 }
 
-class Task1 implements Runnable{
+class Task1 implements Runnable {
 
 	/**
 	 * 带 void 的运行方法
 	 */
 	@Override
 	public void run() {
-		List<Object> list = new ArrayList<>();
+		List<Object> list = new ArrayList<Object>();
 		long t0 = System.currentTimeMillis();
 		for (int i = 0; i < 10000; i++) {
 			list.add(new BigDecimal(i));
