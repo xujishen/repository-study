@@ -32,7 +32,7 @@ public class CommonController implements Serializable {
 	
 	public String getAccessPagePath(String pageId) {
 		if (StringUtils.isEmpty(pageId)) {
-			return "";
+			return StaticPage.NULL_PAGE.getPath();
 		}
 		StaticPage[] staticPages = StaticPage.values();
 		for (StaticPage staticPage : staticPages) {
@@ -40,10 +40,14 @@ public class CommonController implements Serializable {
 				return staticPage.getPath();
 			}
 		}
-		return "";
+		return StaticPage.NULL_PAGE.getPath();
 	}
-	
+
+	/**
+	 * 静态页面枚举类
+	 */
 	public enum StaticPage {
+		NULL_PAGE("404", "404", "公共HTML页面"),
 		COMMON_HTML("common", "common/common", "公共HTML页面"),
 		AREA_PAGE("area", "system/area/areaManage", "区域管理页面");
 		

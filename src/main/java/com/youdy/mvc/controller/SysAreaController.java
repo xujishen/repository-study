@@ -42,7 +42,7 @@ public class SysAreaController extends CommonController {
 	 * @param body
 	 * @return
 	 */
-	@RequestMapping(value = "/searchAreaData.htmls", method = RequestMethod.POST)
+	@RequestMapping(value = "/searchAreaData.htmls", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
 	@ResponseBody
 	public String searchAreaData(HttpServletRequest req, @RequestBody String body)
 	{
@@ -54,7 +54,7 @@ public class SysAreaController extends CommonController {
 				SysAreaBean areaBean = (SysAreaBean) new Gson().fromJson(body, SysAreaBean.class);
 				
 				List<SysAreaBean> list = areaService.searchAreas(areaBean);
-				resultMap.put("list", list);
+				resultMap.put("data", list);
 			}
 			else
 			{

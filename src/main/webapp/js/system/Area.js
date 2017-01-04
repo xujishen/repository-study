@@ -5,7 +5,8 @@
 		
 		// 帮查询按钮事件
 		$('#searchButton').on('click', AreaService.searchAreaData);
-		
+		$('#createButton').on('click', AreaService.toCreate);
+
 		// 初始化查询数据
 		AreaService.searchAreaData();
 		
@@ -32,7 +33,6 @@
 				var bean = new Area();
 				bean.areaSearchName = areaSearchName;
 				bean.areaLevel = areaLevel;
-				console.log(bean.pageNumber);
 				AreaService.datas.areaBean = bean;
 			}
 		},
@@ -41,7 +41,7 @@
 		 * 查询区域数据
 		 */
 		searchAreaData: function () {
-			this.buildAreaBean('s');
+			AreaService.buildAreaBean('s');
 			
 			$.ajax({
 				url: _CONTEXTPATH + AreaService.datas.modelName + '/searchAreaData.htmls',
@@ -49,10 +49,18 @@
 				contentType: "application/json", 
 				data: JSON.stringify(AreaService.datas.areaBean),
 				success: function(resp) {
-					//console.log(resp);
+					if (ObjectUtils.isNotEmpty(resp)) {
+						var jsonData = resp;
+						var msg = jsonData.msg;
+						AreaService.datas.areaList = resp.data;
+						AreaService.renderAreaList();
+					}
+					else {
+						console.log('Not get the response data !');
+					}
 				},
 				error: function(data) {
-					console.log(data);
+					console.log(JSON.stringify(data));
 				}
 			});
 			
@@ -62,7 +70,32 @@
 		 * 渲染区域数据
 		 */
 		renderAreaList: function() {
-			
+			var html = EMPTY;
+			var list = AreaService.datas.areaList;
+			if (CollectionUtils.isNotBlank(list)) {
+				for (var i in list) {
+					var bean = list[i];
+					html +=
+						'<tr>' +
+						'	<td>' +
+						'		<input type="radio" id="check' + bean.areaID + '"/>' +
+						'	</td>' +
+						'	<td>' + i + '</td>' +
+						'	<td>' + bean.areaName + '</td>' +
+						'	<td>' + bean.areaLevelName + '</td>' +
+						'	<td>' + bean.status + '</td>' +
+						'	<td>' + new Date(bean.createTime).Format("yyyy-MM-dd hh:mm:ss") + '</td>' +
+						'</tr>';
+				}
+			}
+			$('#areaList_tbody').empty().append(html);
+		},
+
+		/**
+		 * 开始创建
+		 */
+		toCreate: function() {
+
 		}
 		
 	};

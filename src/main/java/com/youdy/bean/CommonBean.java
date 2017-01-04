@@ -35,6 +35,26 @@ public class CommonBean implements Serializable, Cloneable {
 	
 	private Integer pageCnt;
 
+	private  Integer startIndex = 0;
+
+	private Integer endIndex = 10;
+
+	public Integer getStartIndex() {
+		return startIndex;
+	}
+
+	public Integer getEndIndex() {
+		return endIndex;
+	}
+
+	public void setStartIndex(Integer startIndex) {
+		this.startIndex = startIndex;
+	}
+
+	public void setEndIndex(Integer endIndex) {
+		this.endIndex = endIndex;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -108,10 +128,35 @@ public class CommonBean implements Serializable, Cloneable {
 	}
 
 	@Override
-	public String toString() {
-		return "CommonBean [id=" + id + ", createTime=" + createTime + ", creator=" + creator + ", creatorName="
-				+ creatorName + ", updateTime=" + updateTime + ", updator=" + updator + ", updatorName=" + updatorName
-				+ "]";
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof CommonBean)) return false;
+
+		CommonBean that = (CommonBean) o;
+
+		return getId().equals(that.getId());
+
 	}
-	
+
+	@Override
+	public int hashCode() {
+		return getId().hashCode();
+	}
+
+	@Override
+	public String toString() {
+		return "CommonBean{" +
+				"id=" + id +
+				", createTime=" + createTime +
+				", creator=" + creator +
+				", creatorName='" + creatorName + '\'' +
+				", updateTime=" + updateTime +
+				", updator=" + updator +
+				", updatorName='" + updatorName + '\'' +
+				", pageNumber=" + pageNumber +
+				", pageCnt=" + pageCnt +
+				", startIndex=" + startIndex +
+				", endIndex=" + endIndex +
+				'}';
+	}
 }

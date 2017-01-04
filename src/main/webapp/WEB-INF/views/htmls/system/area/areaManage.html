@@ -30,13 +30,16 @@
 				<td>
 					<button id="searchButton">查询</button>
 				</td>
+				<td>
+					<button id="createButton">新建</button>
+				</td>
 			</tr>
 		</table>
 	</div>
 	<!-- 显示区 -->
 	<span>区域列表</span>
 	<div id="areaList">
-		<table>
+		<table style="border: 1;">
 			<thead>
 				<th><input type="checkbox" id="areaList_checkAll" /></th>
 				<th>序号</th>
@@ -51,5 +54,31 @@
 			</tbody>
 		</table>
 	</div>
+
+	<template id="createDiv">
+		<table id="createTable">
+			<tr>
+				<td>名称: </td>
+				<td>
+					<input type="text" id="areaName" value=""/>
+				</td>
+
+				<td>类型: </td>
+				<td>
+					<select id="areaLevel">
+						<option value="1" selected="selected">省(直辖市)</option>
+						<!--<option value="2"></option>
+						<option value="3"></option>
+						<option value="4"></option>-->
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button id="saveButton">确定</button>
+				</td>
+			</tr>
+		</table>
+	</template>
 </body>
 </html>

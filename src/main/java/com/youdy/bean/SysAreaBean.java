@@ -19,12 +19,19 @@ public class SysAreaBean extends CommonBean {
 	private Integer areaCode;
 	private Integer parentID;
 	private Integer areaLevel;
+	private String areaLevelName;
 	private Integer countryID;
 	private Short status;
 	
 	private transient String areaSearchName;
-	
-	//private Date createTime;
+
+
+	public String getAreaLevelName() {
+		return areaLevelName;
+	}
+
+	public void setAreaLevelName(String areaLevelName) {
+	}
 	public Integer getAreaID() {
 		return areaID;
 	}
@@ -54,6 +61,19 @@ public class SysAreaBean extends CommonBean {
 	}
 	public void setAreaLevel(Integer areaLevel) {
 		this.areaLevel = areaLevel;
+		if (this.areaLevel == null) {
+			this.areaLevelName = "";
+		} else if (this.areaLevel.equals(new Integer(1))) {
+			this.areaLevelName = "省直辖市";
+		} else if (this.areaLevel.equals(new Integer(2))) {
+			this.areaLevelName = "市";
+		} else if (this.areaLevel.equals(new Integer(3))) {
+			this.areaLevelName = "区县";
+		} else if (this.areaLevel.equals(new Integer(4))) {
+			this.areaLevelName = "乡镇";
+		} else {
+			this.areaLevelName = "";
+		}
 	}
 	public Integer getCountryID() {
 		return countryID;

@@ -123,6 +123,12 @@ var CollectionUtils = {
         return Object.prototype.toString.call(arrays) === '[object Array]';
     },
 
+    // 优化后的方法
+    isArray: function (a) {
+        return (a && (($.browser.safari && typeof a == 'object' && a.length) ||
+            (a.constructor && a.constructor.toString().match(/\Array\(\)/))));
+    },
+
     // 清除数组中空值
     clearBlanks: function (arrays) {
         var newArr = new Array();
