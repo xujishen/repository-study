@@ -13,4 +13,10 @@
     	<!-- 区域 -->
         <typeAlias alias="SysAreaBean" type="com.youdy.bean.SysAreaBean"/>
     </typeAliases>
+    
+    <plugins>
+        <plugin interceptor="com.youdy.plugin.TestMybatisPlugin">
+            <property name="agr1" value="111"></property>
+        </plugin>
+    </plugins>
 </configuration>
