@@ -5,6 +5,9 @@ import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import sun.reflect.ConstructorAccessor;
+import sun.reflect.ReflectionFactory;
+
 /**
  * 通过反射创建实例 Created by Su Jishen on 2017/1/11 11:17.
  */
@@ -21,22 +24,24 @@ public class ConstructorTest {
 	void fuck() {
 		System.out.println();
 	}
+	
+	public static void printType(TestType testType) {
+		System.out.println(testType.ordinal());
+	}
 
 	public static <T> void main(String[] args) throws Exception {
-		Class clazz = Class.forName("com.youdy.test.TestType");
-		Constructor constructor = clazz.getDeclaredConstructor(String.class, int.class);
-		constructor.newInstance(new Object[]{"Type", 3});
-		System.out.println(constructor);
-		// Object[] enumConstants = clazz.getEnumConstants();
-		//
-		// for (int i = 0; i < enumConstants.length; i++) {
-		// Enum o = (Enum) enumConstants[i];
-		// }
-
+		Class<?> clazz = Class.forName("com.youdy.test.TestType");
+		Constructor<?> constructor = clazz.getDeclaredConstructor(String.class, int.class);
+		ReflectionFactory reflection = ReflectionFactory.getReflectionFactory();
+		ConstructorAccessor constructorAccessor = reflection.newConstructorAccessor(constructor);
+		TestType t = (TestType) constructorAccessor.newInstance(new Object[]{"Type", 3});
+		ConstructorTest.printType(t);
+		System.out.println(clazz.getEnumConstants());
 	}
 
 }
 
 enum TestType {
-	TYPE1, TYPE2
+	TYPE1, TYPE2;
+	
 };
