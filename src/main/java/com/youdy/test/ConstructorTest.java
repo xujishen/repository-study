@@ -29,7 +29,7 @@ public class ConstructorTest {
 		System.out.println(testType.ordinal());
 	}
 
-	public static <T> void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
 		Class<?> clazz = Class.forName("com.youdy.test.TestType");
 		Constructor<?> constructor = clazz.getDeclaredConstructor(String.class, int.class);
 		ReflectionFactory reflection = ReflectionFactory.getReflectionFactory();
