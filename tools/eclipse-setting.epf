@@ -1,4 +1,4 @@
-#Thu Jan 12 18:25:44 CST 2017
+#Fri Jan 13 17:16:09 CST 2017
 /instance/de.walware.statet.r.ui/text_Rd_rdOtherTag.underline=false
 /instance/org.eclipse.team.ui/org.eclipse.team.ui.first_time=false
 /instance/org.eclipse.rse.core/useridperkey=xujishen.Local\=a;
@@ -120,6 +120,7 @@
 /instance/ccw.core/ccw.preferences.editor_color.GLOBAL_VAR.enabled=true
 /instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.javadoclocations.migrated=true
 /instance/de.walware.statet.r.ui/text_R_rIndexing.bold=false
+/instance/org.eclipse.wst.jsdt.ui/org.eclipse.wst.jsdt.ui.gettersetter.use.is=true
 /instance/de.walware.statet.r.ui/text_Rd_rdOtherTag.italic=false
 /instance/org.python.pydev/BACKQUOTES_STYLE=0
 /instance/org.eclipse.jdt.ui/content_assist_favorite_static_members=
@@ -147,6 +148,7 @@
 /instance/com.powerflasher.fdt.ui/AS_CORE_color_strikethrough=false
 @org.eclipse.ui=3.107.0.v20150507-1945
 /instance/org.eclipse.dltk.tcl.ui/DLTK_string_strikethrough=false
+/instance/org.eclipse.wst.jsdt.ui/org.eclipse.wst.jsdt.ui.visibility.order=B,V,R,D,
 /instance/org.eclipse.ui.workbench//org.eclipse.ui.commands/state/org.eclipse.wst.xml.views.XPathView.processor.xpathprocessor/org.eclipse.ui.commands.radioState=xpath10
 /instance/org.eclipse.ui.workbench/org.eclipse.e4.ui.css.theme.e4_default.xpolive5.1.org.eclipse.ui.workbench.ACTIVE_TAB_OUTER_KEYLINE_COLOR=191,205,164
 /instance/de.walware.statet.r.ui/text_Rd_taskTag.strikethrough=false
@@ -157,6 +159,7 @@
 /instance/org.sweetlemonade.eclipse.json/colorDefaultStyle=0
 /instance/com.powerflasher.fdt.ui/JAVADOC_LINK_color_underline=false
 /instance/com.adobe.flexide.css.core/cssFontFaceStrikethrough=false
+/instance/org.eclipse.wst.jsdt.core/org.eclipse.wst.jsdt.core.codeComplete.localPrefixes=
 /instance/org.codehaus.groovy.eclipse.ui/groovy.editor.groovyDoc.keyword.enabled=true
 /instance/com.powerflasher.fdt.ui/MULTILINE_COMMENT_TODO_color_bold=false
 /instance/org.eclipse.ui.workbench/org.eclipse.e4.ui.css.theme.e4_default.xpolive5.1.org.eclipse.ui.workbench.ACTIVE_UNSELECTED_TABS_COLOR_START=230,227,195
@@ -182,6 +185,7 @@
 /instance/com.powerflasher.fdt.ui/AS_CONSTANTS_color_underline=false
 /instance/de.walware.statet.r.ui/text_Rd_rdOtherTag.strikethrough=false
 /instance/org.eclipse.wst.jsdt.web.core/jspIndexState=4
+/instance/org.eclipse.wst.jsdt.ui/outlinesortoption=T,I,F,C,M,
 /instance/com.powerflasher.fdt.ui/SINGLELINE_COMMENT_color_bold=false
 /instance/ccw.core/ccw.preferences.editor_color.keyword.italic=false
 /instance/org.python.pydev/KEYWORD_STYLE=0
@@ -221,7 +225,7 @@
 /instance/org.eclipse.jst.jsp.core/validation.el-lexical-failure=-1
 /instance/com.adobe.flexide.as.core/asCommentItalic=true
 /instance/org.eclipse.dltk.ruby.ui/ruby.symbols_underline=false
-@org.eclipse.egit.core=4.4.1.201607150455-r
+@org.eclipse.egit.core=4.5.0.201609210915-r
 /configuration/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
 /instance/org.eclipse.dltk.tcl.ui/DLTK_keyword_return_strikethrough=false
 /instance/org.eclipse.dltk.ruby.ui/variable.instance_italic=false
@@ -271,7 +275,7 @@
 /instance/org.eclipse.wst.jsdt.core/org.eclipse.wst.jsdt.core.codeComplete.visibilityCheck=enabled
 /instance/com.adobe.flexide.as.core/asClassUnderline=false
 /instance/com.adobe.flexide.mxml.core/asASDocBold=false
-/instance/org.eclipse.egit.ui/commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>[Add] Add test file</message>\r\n<message>[Add]\: Add the &quot;IDEA&quot; settings jar</message>\r\n<message>Add the procedure template file(txt). </message>\r\n<message>\u4FEE\u6539\u65E0\u6570\u636E\u8FD4\u56DE\u65F6 \u4E0D\u663E\u793A &quot;\u6682\u65E0\u6570\u636E&quot;</message>\r\n</messages>
+/instance/org.eclipse.egit.ui/commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>[Add]\: Add the eclipse setting file.</message>\r\n<message>[Add] Add test file</message>\r\n<message>[Add]\: Add the &quot;IDEA&quot; settings jar</message>\r\n<message>Add the procedure template file(txt). </message>\r\n<message>\u4FEE\u6539\u65E0\u6570\u636E\u8FD4\u56DE\u65F6 \u4E0D\u663E\u793A &quot;\u6682\u65E0\u6570\u636E&quot;</message>\r\n</messages>
 /instance/org.sweetlemonade.eclipse.json/colorObjectBracketStyle=0
 /instance/org.eclipse.ui.workbench/org.eclipse.jface.textfont=1|Consolas|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
 /instance/org.eclipse.rse.core/org.eclipse.rse.systemtype.local.systemType.defaultUserId=a
@@ -309,7 +313,7 @@
 /instance/ccw.core/ccw.preferences.editor_color.SPECIAL_FORM.enabled=true
 /instance/com.adobe.flexide.as.core/asOperatorItalic=false
 /instance/org.erlide.ui/editor/colors/macro/color=255,255,0
-/instance/org.eclipse.ui.ide/platformState=1449143524713
+/instance/org.eclipse.ui.ide/platformState=1449143524766
 /instance/org.eclipse.ui.workbench/org.eclipse.e4.ui.css.theme.e4_default.xpolive5.1.org.eclipse.ui.workbench.ACTIVE_TAB_INNER_KEYLINE_COLOR=255,255,255
 /instance/de.walware.statet.r.ui/text_R_rFlowcontrol.italic=true
 /instance/org.eclipse.dltk.tcl.ui/DLTK_comment_task_tag_italic=false
@@ -392,6 +396,7 @@
 /instance/org.eclipse.debug.ui/pref_state_memento.org.eclipse.debug.ui.ExpressionView=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<VariablesViewMemento org.eclipse.debug.ui.SASH_DETAILS_PART\="315" org.eclipse.debug.ui.SASH_VIEW_PART\="684">\r\n<PRESENTATION_CONTEXT_PROPERTIES IMemento.internal.id\="org.eclipse.debug.ui.ExpressionView"/>\r\n</VariablesViewMemento>
 /instance/org.eclipse.e4.CSS/org.eclipse.e4.CSS.syntaxColorer.tokenStyles.error.color=0,255,0
 /instance/com.adobe.flexide.mxml.core/mxmlCommentBold=false
+/instance/org.eclipse.wst.jsdt.core/org.eclipse.wst.jsdt.core.codeComplete.argumentSuffixes=
 /instance/ccw.core/ccw.preferences.editor_color.comment.enabled=true
 /instance/org.eclipse.wst.validation/vals/org.eclipse.jst.jsp.core.TLDValidator/global=FF01
 /instance/com.powerflasher.fdt.ui/AS_KEYWORD_color_bold=false
@@ -464,6 +469,7 @@
 /instance/de.walware.statet.r.ui/text_R_taskTag.bold=false
 /instance/org.eclipse.e4.CSS/org.eclipse.e4.CSS.syntaxColorer.tokenStyles.string.color=220,120,220
 /instance/ccw.core/ccw.preferences.editor_color.GLOBAL_VAR.italic=false
+/instance/org.eclipse.wst.jsdt.ui/content_assist_autoactivation_triggers_java=.ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
 /instance/com.adobe.flexide.as.core/asReservedBold=false
 /instance/com.powerflasher.fdt.ui/SINGLELINE_COMMENT_color_underline=false
 /instance/org.eclipse.wst.jsdt.ui/content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"/>
@@ -502,7 +508,7 @@
 /instance/org.eclipse.jst.jsp.core/validation.directive-taglib-unresolvable-uri-or-tagdir=1
 /instance/ccw.core/ccw.preferences.editor_color.float.bold=false
 /instance/com.adobe.flexide.css.core/cssFontFaceBold=false
-@org.eclipse.egit.ui=4.4.1.201607150455-r
+@org.eclipse.egit.ui=4.5.0.201609210915-r
 /instance/com.adobe.flexide.as.core/asTraceBold=false
 /instance/org.eclipse.dltk.ruby.ui/DLTK_string.regexp_italic=false
 /instance/ccw.core/ccw.preferences.editor_color.literalSymbol.italic=false
@@ -559,6 +565,7 @@
 /instance/com.adobe.flexide.css.core/cssSelectorStrikethrough=false
 /instance/com.adobe.flexide.mxml.core/mxmlTagBold=false
 /instance/org.eclipse.wst.jsdt.ui/tabWidthPropagated=true
+/instance/org.eclipse.wst.jsdt.ui/org.eclipse.wst.jsdt.ui.exception.name=e
 /instance/org.eclipse.ui.workbench/org.eclipse.e4.ui.css.theme.e4_default.xpolive5.1.org.eclipse.ui.workbench.INACTIVE_UNSELECTED_TABS_COLOR_END=255,255,255
 /instance/com.adobe.flexide.mxml.core/mxmlStringUnderline=false
 /instance/org.eclipse.e4.CSS/org.eclipse.e4.CSS.syntaxColorer.tokenStyles.punctuation.color=208,208,208
@@ -643,6 +650,7 @@ file_export_version=3.0
 /instance/com.powerflasher.fdt.ui/AS_PUBLIC_color_underline=false
 /instance/org.eclipse.ui/showIntro=false
 /instance/org.eclipse.dltk.tcl.ui/DLTK_keyword_return_italic=true
+/instance/org.eclipse.wst.jsdt.core/org.eclipse.wst.jsdt.core.codeComplete.argumentPrefixes=
 @org.eclipse.e4.ui.workbench.renderers.swt=0.13.0.v20150901-1347
 /instance/ccw.core/ccw.preferences.editor_color.JAVA_INSTANCE_METHOD.bold=false
 /instance/org.eclipse.dltk.tcl.ui/tcl_variable_bold=false
@@ -690,7 +698,7 @@ file_export_version=3.0
 @com.github.eclipsecolortheme=1.0.0.201410260308
 /instance/org.eclipse.debug.ui/org.eclipse.debug.ui.user_view_bindings=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<viewBindings>\r\n<view id\="org.eclipse.debug.ui.VariableView">\r\n<perspective id\="org.eclipse.debug.ui.DebugPerspective" userAction\="opened"/>\r\n</view>\r\n<view id\="org.eclipse.debug.ui.DebugView">\r\n<perspective id\="org.eclipse.debug.ui.DebugPerspective" userAction\="closed"/>\r\n</view>\r\n<view id\="org.eclipse.debug.ui.ExpressionView">\r\n<perspective id\="org.eclipse.debug.ui.DebugPerspective" userAction\="opened"/>\r\n</view>\r\n<view id\="org.eclipse.debug.ui.BreakpointView">\r\n<perspective id\="org.eclipse.debug.ui.DebugPerspective" userAction\="opened"/>\r\n</view>\r\n<view id\="org.eclipse.ui.console.ConsoleView">\r\n<perspective id\="org.eclipse.debug.ui.DebugPerspective" userAction\="closed"/>\r\n</view>\r\n</viewBindings>\r\n
 /instance/com.adobe.flexide.mxml.core/mxmlProcessingInstructionItalic=false
-/instance/org.eclipse.wst.server.discovery/cache-lastUpdatedDate=Thu Oct 13 2016 15\:10\:35 CST
+/instance/org.eclipse.wst.server.discovery/cache-lastUpdatedDate=Fri Jan 13 2017 10\:32\:48 CST
 /instance/de.walware.statet.r.ui/text_R_rRoxygen.italic=true
 /configuration/org.eclipse.ui.ide/MAX_RECENT_WORKSPACES=5
 /instance/org.eclipse.oomph.workingsets/working.set.group=<?xml version\="1.0" encoding\="UTF-8"?>\n<workingsets\:WorkingSetGroup xmi\:version\="2.0" xmlns\:xmi\="http\://www.omg.org/XMI" xmlns\:workingsets\="http\://www.eclipse.org/oomph/workingsets/1.0"/>\n
@@ -707,7 +715,7 @@ file_export_version=3.0
 /instance/com.powerflasher.fdt.ui/JAVADOC_KEYWORD_color_italic=false
 /instance/com.powerflasher.fdt.ui/AS_CONSTANTS_color_strikethrough=false
 @org.eclipse.pde.api.tools=1.0.701.v20150831-1041
-/instance/org.eclipse.wst.jsdt.ui/org.eclipse.wst.jsdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+/instance/org.eclipse.wst.jsdt.ui/org.eclipse.wst.jsdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates><template autoinsert\="false" context\="org.eclipse.jsdt.typecomment_context" deleted\="false" description\="Comment for created types" enabled\="true" id\="org.eclipse.wst.jsdt.ui.text.codetemplates.typecomment" name\="typecomment">/**\r\n * Created by Su Jishen at ${date}\r\n * ${tags}\r\n */</template></templates>
 /instance/org.python.pydev/CODE_STYLE=0
 /instance/org.eclipse.jdt.ui/content_assist_autoactivation_triggers_java=.ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
 /instance/ccw.core/ccw.preferences.editor_color.FUNCTION.enabled=true
@@ -716,6 +724,7 @@ file_export_version=3.0
 /instance/de.walware.statet.r.ui/text_R_rSeparators.italic=false
 /instance/de.walware.statet.r.ui/text_Rd_taskTag.italic=false
 /instance/org.eclipse.egit.core/GitRepositoriesView.GitDirectories=E\:\\Projects\\si_portal_for_topo2\\.git;E\:\\Projects\\si_topology2\\.git;E\:\\Projects\\si_portal\\.git;E\:\\Projects\\si_server_v2\\.git;E\:\\Projects\\npm\\.git;E\:\\Projects\\si_ni\\.git;E\:\\Projects\\study\\.git;E\:\\Projects\\mybatis-3\\.git;E\:\\Projects\\si_common\\.git;
+/instance/org.eclipse.wst.jsdt.ui/content_assist_autoactivation=true
 /instance/com.adobe.flexide.as.core/asVarItalic=false
 /instance/com.powerflasher.fdt.ui/AS_KEYWORD_color_strikethrough=false
 /instance/org.eclipse.ui.workbench/editors=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<editors>\r\n<descriptor class\="org.eclipse.jst.pagedesigner.editors.HTMLEditor" id\="org.eclipse.jst.pagedesigner.PageDesignerEditor" image\="icons/PD_Plugin.gif" internal\="true" label\="Web Page Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.jst.pagedesigner"/>\r\n<descriptor id\="org.eclipse.ui.browser.editorSupport" image\="$nl$/icons/obj16/internal_browser.gif" internal\="false" label\="Web Browser" launcher\="org.eclipse.ui.internal.browser.BrowserLauncher" openMode\="4" open_in_place\="false" plugin\="org.eclipse.ui.browser"/>\r\n<descriptor class\="org.eclipse.wst.sse.ui.StructuredTextEditor" id\="org.eclipse.jst.jsp.core.jspsource.source" image\="$nl$/icons//full/obj16/sourceEditor.gif" internal\="true" label\="JSP Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.jst.jsp.ui"/>\r\n<descriptor class\="org.eclipse.m2e.editor.pom.MavenPomEditor" id\="org.eclipse.m2e.editor.MavenPomEditor" image\="icons/editor-pom.gif" internal\="true" label\="Maven POM Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.m2e.editor"/>\r\n<descriptor class\="org.eclipse.datatools.sqltools.internal.sqlscrapbook.editor.SQLScrapbookEditor" id\="org.eclipse.datatools.sqltools.sqlscrapbook.SQLScrapbookEditor" image\="images/qrydoc.gif" internal\="true" label\="SQL File Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.datatools.sqltools.sqlscrapbook"/>\r\n<descriptor class\="org.eclipse.oomph.workingsets.presentation.WorkingSetsEditor" id\="org.eclipse.oomph.workingsets.presentation.WorkingSetsEditorID" image\="icons/full/obj16/WorkingSetsModelFile.gif" internal\="true" label\="WorkingSets Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.oomph.workingsets.editor"/>\r\n<descriptor class\="org.eclipse.wst.server.ui.internal.editor.ServerEditor" id\="org.eclipse.wst.server.ui.editor" image\="icons/obj16/server.gif" internal\="true" label\="Server Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.wst.server.ui"/>\r\n<descriptor class\="org.eclipse.wst.jsdt.internal.ui.javaeditor.CompilationUnitEditor" id\="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" image\="$nl$/icons/full/obj16/jcu_obj.gif" internal\="true" label\="JavaScript Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.wst.jsdt.ui"/>\r\n<descriptor id\="org.eclipse.jdt.ui.JARDescEditor" image\="$nl$/icons/full/obj16/jar_desc_obj.png" internal\="false" label\="JAR Export Wizard" launcher\="org.eclipse.jdt.internal.ui.jarpackager.OpenJarExportWizardEditorLauncher" openMode\="4" open_in_place\="false" plugin\="org.eclipse.jdt.ui"/>\r\n<descriptor class\="org.eclipse.wst.xsl.ui.internal.editor.XSLEditor" id\="org.eclipse.wst.xsl.ui.XSLEditor" image\="$nl$/icons/full/xslt_file.gif" internal\="true" label\="XSL Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.wst.xsl.ui"/>\r\n<descriptor class\="org.eclipse.datatools.sqltools.sqlbuilder.SQLBuilderEditor" id\="org.eclipse.datatools.sqltools.sqlbuilder" image\="images/qrydoc.gif" internal\="true" label\="SQL Query Builder" openMode\="1" open_in_place\="false" plugin\="org.eclipse.datatools.sqltools.sqlbuilder"/>\r\n<descriptor class\="org.eclipse.oomph.setup.presentation.SetupEditor" id\="org.eclipse.oomph.setup.presentation.SetupEditorID" image\="icons/full/obj16/SetupModelFile.gif" internal\="true" label\="Setup Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.oomph.setup.editor"/>\r\n<descriptor class\="org.eclipse.jdt.internal.ui.javaeditor.ClassFileEditor" id\="org.eclipse.jdt.ui.ClassFileEditorNoSource" image\="$nl$/icons/full/obj16/classf_obj.png" internal\="true" label\="Class File Viewer" openMode\="1" open_in_place\="false" plugin\="org.eclipse.jdt.ui"/>\r\n<descriptor class\="org.eclipse.jdt.internal.debug.ui.snippeteditor.JavaSnippetEditor" id\="org.eclipse.jdt.debug.ui.SnippetEditor" image\="$nl$/icons/full/obj16/jsbook_obj.gif" internal\="true" label\="Scrapbook" openMode\="1" open_in_place\="false" plugin\="org.eclipse.jdt.debug.ui"/>\r\n<descriptor class\="org.eclipse.pde.internal.ui.samples.SampleEditor" id\="org.eclipse.pde.ui.sampleEditor" image\="$nl$/icons/obj16/build_exec.png" internal\="true" label\="Code Sample Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.pde.ui"/>\r\n</editors>
@@ -817,6 +826,7 @@ file_export_version=3.0
 /instance/de.walware.statet.r.ui/text_R_rString.strikethrough=false
 /instance/de.walware.statet.r.ui/text_Rd_rdComment.strikethrough=false
 /instance/de.walware.statet.r.ui/text_Rd_rdSubSectionTag.italic=false
+/instance/org.eclipse.wst.jsdt.core/org.eclipse.wst.jsdt.core.codeComplete.localSuffixes=
 /instance/org.eclipse.ui.views.log/maxLogTailSize=1
 /instance/org.eclipse.core.resources/encoding=UTF-8
 /instance/org.eclipse.ui.workbench/PLUGINS_NOT_ACTIVATED_ON_STARTUP=org.eclipse.m2e.discovery;

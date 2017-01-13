@@ -9,6 +9,8 @@
 
 		// 初始化查询数据
 		AreaService.searchAreaData();
+
+		layer.msg('aab');
 		
 	});
 	
