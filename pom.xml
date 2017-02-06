@@ -29,6 +29,7 @@
   	<jsp-api>2.0</jsp-api>
   	<commons-logging>1.2</commons-logging>
   	<druid>1.0.26</druid>
+  	<libthrift.version>0.9.3</libthrift.version>
   </properties>
   
   <repositories>
@@ -49,7 +50,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.1.2</version>
       <scope>test</scope>
     </dependency>
     
@@ -228,6 +229,12 @@
 	    <groupId>javax.servlet</groupId>
 	    <artifactId>jsp-api</artifactId>
 	    <version>${jsp-api}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.thrift</groupId>
+	    <artifactId>libthrift</artifactId>
+	    <version>${libthrift.version}</version>
 	</dependency>
 		
   </dependencies>

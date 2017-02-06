@@ -11,3 +11,19 @@ document.write(_INCLUDES);
 
 var EMPTY = '';
 
+/**
+ * 扩展对象
+ */
+function _extend() {
+	var len = arguments.length;
+	if (len < 1) {
+		return {};
+	}
+	
+	var curr;
+	for (var i = 0; i < len; i ++) {
+		curr = arguments[i];
+		
+	}
+	console.log(arguments);
+};
