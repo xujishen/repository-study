@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>mr.shen</groupId>
-  <artifactId>shenge</artifactId>
+  <artifactId>yourtest</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <name>shenge Maven Webapp</name>
@@ -30,13 +30,15 @@
   	<commons-logging>1.2</commons-logging>
   	<druid>1.0.26</druid>
   	<libthrift.version>0.9.3</libthrift.version>
+  	<jersey-server.sersion>1.19.3</jersey-server.sersion>
+  	<jersey-spring.sersion>1.19.3</jersey-spring.sersion>
   </properties>
   
   <repositories>
 	<repository>
 		<id>nexus</id>
 		<name>local private nexus</name>
-		<url>http://maven.oschina.net/content/groups/public/</url>
+		<url>http://central.maven.org/maven2/</url>
 		<releases>
 			<enabled>true</enabled>
 		</releases>
@@ -50,7 +52,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.1.2</version>
+      <version>3.8</version>
       <scope>test</scope>
     </dependency>
     
@@ -90,7 +92,42 @@
 	    <artifactId>spring-context-support</artifactId>
 	    <version>${spring.version}</version>
 	</dependency>
+	<!-- jersey + spring -->
+	<!-- <dependency>
+	    <groupId>com.sun.jersey.contribs</groupId>
+	    <artifactId>jersey-spring</artifactId>
+	    <version>${jersey-spring.sersion}</version>
+		<exclusions>
+	        <exclusion>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring</artifactId>
+	        </exclusion>
+	        <exclusion>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-core</artifactId>
+	        </exclusion>
+	        <exclusion>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-web</artifactId>
+	        </exclusion>
+	        <exclusion>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-beans</artifactId>
+	        </exclusion>
+	        <exclusion>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-context</artifactId>
+	        </exclusion>
+    	</exclusions>
+	</dependency>	 -->
     <!-- End the spring families -->
+   
+   	<!-- jersey -->
+	<dependency>
+	    <groupId>com.sun.jersey</groupId>
+	    <artifactId>jersey-server</artifactId>
+	    <version>${jersey-server.sersion}</version>
+	</dependency>
    
     <!-- redis cache jar -->
     <dependency>
@@ -241,5 +278,21 @@
   
   <build>
     <finalName>yourtest</finalName>
+    <pluginManagement>
+    	<plugins>
+    		<plugin>
+    			<groupId>org.apache.tomcat.maven</groupId>
+    			<artifactId>tomcat7-maven-plugin</artifactId>
+    			<version>2.2</version>
+                <configuration>
+                    <uriEncoding>UTF-8</uriEncoding>
+                    <server>tomcat7</server>
+                    <path>/yourtest</path>
+                    <port>8081</port>
+                    <url>http://127.0.0.1:8081/</url>
+                </configuration>
+    		</plugin>
+    	</plugins>
+    </pluginManagement>
   </build>
 </project>
