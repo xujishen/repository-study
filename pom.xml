@@ -259,6 +259,7 @@
 	    <groupId>javax.servlet</groupId>
 	    <artifactId>javax.servlet-api</artifactId>
 	    <version>${javax.servlet-api}</version>
+	    <scope>provided</scope>
 	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/javax.servlet/jsp-api -->
@@ -266,6 +267,7 @@
 	    <groupId>javax.servlet</groupId>
 	    <artifactId>jsp-api</artifactId>
 	    <version>${jsp-api}</version>
+	    <scope>provided</scope>
 	</dependency>
 	
 	<dependency>
