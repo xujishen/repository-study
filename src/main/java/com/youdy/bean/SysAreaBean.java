@@ -1,5 +1,7 @@
 package com.youdy.bean;
 
+import java.util.Date;
+
 /**
  * 系统区域实体Bean
  * @File: SysAreaBean.java
@@ -10,7 +12,7 @@ package com.youdy.bean;
  * @Copyright (C) 2008-2016 www.oneapm.com. all rights reserved.
  *
  */
-public class SysAreaBean extends CommonBean {
+public class SysAreaBean extends CommonBean implements Comparable<SysAreaBean> {
 
 	private static final long serialVersionUID = -5505278375125054618L;
 	
@@ -127,6 +129,25 @@ public class SysAreaBean extends CommonBean {
 	public String toString() {
 		return "SysAreaBean [areaID=" + areaID + ", areaName=" + areaName + ", areaCode=" + areaCode + ", parentID="
 				+ parentID + ", areaLevel=" + areaLevel + ", countryID=" + countryID + ", status=" + status + "]";
+	}
+
+	@Override
+	public int compareTo(SysAreaBean o) {
+		if (o != null) {
+			Date oCreateTime = o.getCreateTime();
+			long oCreateTimeMili = oCreateTime.getTime();
+			
+			long cCreateTimeMili = super.getCreateTime().getTime();
+			
+			if (oCreateTimeMili > cCreateTimeMili) {
+				return 1;
+			} else if (oCreateTimeMili < cCreateTimeMili) {
+				return -1;
+			} else {
+				return 0;
+			}
+		}
+		return 0;
 	}
 	
 }
