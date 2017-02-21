@@ -11,12 +11,18 @@
  	<div>
  		<button id="areaMng">区域管理</button>
  	</div>
+ 	<div>
+ 		<button id="fileMng">文件管理</button>
+ 	</div>
 </body>
 </html>
 <script type="text/javascript">
 $().ready(function() {
 	$('body').on('click', '#areaMng', function() {
 		PageUtil.openPage("area");
+	});
+	$('body').on('click', '#fileMng', function() {
+		PageUtil.openPage("file");
 	});
 });
 </script>

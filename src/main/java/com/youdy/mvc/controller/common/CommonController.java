@@ -49,7 +49,8 @@ public class CommonController implements Serializable {
 	public enum StaticPage {
 		NULL_PAGE("404", "404", "公共HTML页面"),
 		COMMON_HTML("common", "common/common", "公共HTML页面"),
-		AREA_PAGE("area", "system/area/areaManage", "区域管理页面");
+		AREA_PAGE("area", "system/area/areaManage", "区域管理页面"),
+		FILE_PAGE("file", "system/file/fileManage", "文件管理页面");
 		
 		private String pageId;
 		private String path;
