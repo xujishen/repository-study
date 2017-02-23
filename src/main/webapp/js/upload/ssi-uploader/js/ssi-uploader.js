@@ -743,7 +743,7 @@
         var defaults = {
             url: '',
             data: {},
-            locale: 'en',
+            locale: 'chn',
             preview: true,
             dropZone: true,
             maxNumberOfFiles: '',
@@ -818,7 +818,21 @@
 
     var locale = {
     	chn: {
-    		
+    		success: '成功',
+            sucUpload: '上传成功',
+            chooseFiles: '选择文件(可多选)',
+            uploadFailed: '上传失败',
+            serverError: '内部服务器错误',
+            error: '错误',
+            abort: '中止',
+            aborted: '被中止',
+            files: '文件',
+            upload: '上传',
+            clear: '清空',
+            drag: '拖拽',
+            sizeError: '$1 超出文件大小限制 $2',// $1=file name ,$2=max ie( example.jpg has has exceed the size limit of 2mb)
+            extError: '$1 文件类型不允许',//$1=file extension ie(exe files are not supported)
+            someErrorsOccurred: '发生错误!'
     	},
         en: {
             success: 'Success',

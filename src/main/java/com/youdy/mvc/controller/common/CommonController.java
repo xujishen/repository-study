@@ -17,7 +17,6 @@ import org.springframework.stereotype.Controller;
  * @Copyright (C) 2008-2016 www.oneapm.com. all rights reserved.
  *
  */
-@Controller
 public class CommonController implements Serializable {
 
 	private static final long serialVersionUID = -6746155676990970786L;

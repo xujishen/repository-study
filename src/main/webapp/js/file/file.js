@@ -1,11 +1,13 @@
+var modelName = "/rest/upload";
+
 $().ready(function() {
 
 	$('#ssi-upload').ssi_uploader({
-		url:'#',
-		maxFileSize:6,
-		allowed:['jpg','gif','txt','png','pdf'],
+		url: _CONTEXTPATH + modelName + '/multis.jtml',
+		maxFileSize: 6,
+		allowed: ['jpg','gif','txt','png','pdf'],
 		data: {},
-        locale: 'en',
+        locale: 'chn',
         preview: true,
         dropZone: true,
         maxNumberOfFiles: '',
@@ -27,7 +29,7 @@ $().ready(function() {
             error: 'error'
         }
 	});
-	//$('#ssi-upload2').ssi_uploader({url:'#',preview:false,allowed:['jpg','gif','txt','png','pdf']});
-	//$('#ssi-upload3').ssi_uploader({url:'#',dropZone:false,allowed:['jpg','gif','txt','png','pdf']});
+	$('#ssi-upload2').ssi_uploader({url:'#',preview:false,allowed:['jpg','gif','txt','png','pdf']});
+	$('#ssi-upload3').ssi_uploader({url:'#',dropZone:false,allowed:['jpg','gif','txt','png','pdf']});
 	
 });
