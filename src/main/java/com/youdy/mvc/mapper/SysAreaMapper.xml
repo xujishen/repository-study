@@ -5,13 +5,13 @@
 	<!-- 查询区域数据 -->
 	<select id="searchAreas" parameterType="SysAreaBean" resultType="SysAreaBean">
 		SELECT 
-			t.areaID AS areaID,
-			t.areaName AS areaName,
-			t.areaCode AS areaCode,
-			t.parentID AS parentID,
-			t.areaLevel AS areaLevel,
-			t.createTime AS createTime,
-			t.status AS status
+			t.areaID 		AS areaID,
+			t.areaName 		AS areaName,
+			t.areaCode 		AS areaCode,
+			t.parentID 		AS parentID,
+			t.areaLevel 	AS areaLevel,
+			t.createTime 	AS createTime,
+			t.status 		AS status
 		FROM SYS_BASE_AREA t
 		WHERE t.status = 1		
 		<if test="areaLevel != null and areaLevel != ''">

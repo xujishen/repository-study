@@ -534,6 +534,7 @@
                     }
                 }
             }, thisS.options.ajaxOptions);
+            console.info(ajaxOptions);
             $.ajax(ajaxOptions).done(function (responseData, textStatus, jqXHR) {
                 var msg, title = '', dataType = 'error', spanClass = 'exclamation', data;
                 try {

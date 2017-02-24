@@ -3,7 +3,7 @@ var modelName = "/rest/upload";
 $().ready(function() {
 
 	$('#ssi-upload').ssi_uploader({
-		url: _CONTEXTPATH + modelName + '/multis.jtml',
+		url: _CONTEXTPATH + modelName + '/multis',
 		maxFileSize: 6,
 		allowed: ['jpg','gif','txt','png','pdf'],
 		data: {},

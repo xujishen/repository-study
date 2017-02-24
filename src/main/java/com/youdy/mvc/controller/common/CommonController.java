@@ -5,7 +5,6 @@ import java.io.Serializable;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.stereotype.Controller;
 
 /**
  * 通用控制器
