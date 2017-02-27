@@ -7,15 +7,19 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.http.protocol.HttpContext;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
+
 import com.google.gson.Gson;
 import com.sun.jersey.core.header.FormDataContentDisposition;
+import com.sun.jersey.multipart.FormDataParam;
 import com.youdy.mvc.controller.common.CommonController;
 
 @Path(value = "/upload")
@@ -38,13 +42,17 @@ public class UploadController extends CommonController {
 	@Path(value = "/multis")
 	@POST
 	@Produces({MediaType.APPLICATION_JSON})
-	@Consumes({ MediaType.MULTIPART_FORM_DATA, MediaType.APPLICATION_JSON, MediaType.APPLICATION_ATOM_XML, MediaType.APPLICATION_FORM_URLENCODED })
-	public String searchAreaData(@Context HttpServletRequest req, @Context HttpServletResponse res, @FormParam("files") InputStream is, @FormParam("files") FormDataContentDisposition disposition)
+	@Consumes({ MediaType.MULTIPART_FORM_DATA })
+	public String doUplpad(@Context HttpServletRequest request,
+			@FormDataParam("files[]") InputStream is, @FormDataParam("files[]") FormDataContentDisposition disposition)
 	{
 		Map<String, Object> resultMap = new HashMap<String, Object>(10);
 		try
 		{
-			System.out.println(req.getParameter("files[]"));
+			System.out.println(request.getParameter("files[]"));
+			System.out.println(request.getParameterNames());
+			String files = disposition.getFileName();
+			System.out.println(files);
 			resultMap.put("code", SUCCESS_CODE);
 			resultMap.put("msg", "成功");
 		}

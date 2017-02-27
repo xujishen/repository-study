@@ -30,8 +30,10 @@
   	<commons-logging>1.2</commons-logging>
   	<druid>1.0.26</druid>
   	<libthrift.version>0.9.3</libthrift.version>
-  	<jersey-server.sersion>1.19.3</jersey-server.sersion>
-  	<jersey-spring.sersion>1.19.3</jersey-spring.sersion>
+  	<jersey-server.version>1.19</jersey-server.version>
+  	<jersey-client.version>1.19</jersey-client.version>
+  	<jersey-multipart.version>1.19</jersey-multipart.version>
+  	<jersey-spring.version>1.19</jersey-spring.version>
   </properties>
   
   <repositories>
@@ -101,7 +103,7 @@
 	<dependency>
 	    <groupId>com.sun.jersey.contribs</groupId>
 	    <artifactId>jersey-spring</artifactId>
-	    <version>${jersey-spring.sersion}</version>
+	    <version>${jersey-spring.version}</version>
 		<exclusions>
 	        <exclusion>
 	            <groupId>org.springframework</groupId>
@@ -147,7 +149,19 @@
 	<dependency>
 	    <groupId>com.sun.jersey</groupId>
 	    <artifactId>jersey-server</artifactId>
-	    <version>${jersey-server.sersion}</version>
+	    <version>${jersey-server.version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>com.sun.jersey</groupId>
+	    <artifactId>jersey-client</artifactId>
+	    <version>${jersey-client.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>com.sun.jersey.contribs</groupId>
+		<artifactId>jersey-multipart</artifactId>
+		<version>${jersey-multipart.version}</version>
 	</dependency>
    
     <!-- redis cache jar -->
