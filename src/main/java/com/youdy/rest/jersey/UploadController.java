@@ -1,6 +1,5 @@
 package com.youdy.rest.jersey;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +15,10 @@ import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
 import com.sun.jersey.core.header.FormDataContentDisposition;
 import com.sun.jersey.multipart.FormDataParam;
+import com.youdy.constants.SystemPropertiesEnum;
 import com.youdy.mvc.controller.common.CommonController;
+import com.youdy.utils.FileUtil;
+import com.youdy.utils.PropertiesUtil;
 
 @Path(value = "/upload")
 public class UploadController extends CommonController {
@@ -41,7 +43,16 @@ public class UploadController extends CommonController {
 		{
 			String fileName;
 			if (disposition != null && ( (fileName = disposition.getFileName()) != null) ) {
+				String randomFileName = FileUtil.generateRandomFileName(fileName);
 				
+				String uploadUrlPrefix = getUrlInfo(request);
+				
+				// Image上传路径
+				String imgRootPath = uploadUrlPrefix + PropertiesUtil.getProperty(SystemPropertiesEnum.UPLOAD_ROOT_PATH.getValue()) + 
+						PropertiesUtil.getProperty(SystemPropertiesEnum.IMG_ROOT_PATH.getValue()) + "/" +
+						randomFileName;
+				
+				FileUtil.doUpload(is, imgRootPath);
 			}
 			resultMap.put("code", SUCCESS_CODE);
 			resultMap.put("msg", "成功");
@@ -55,6 +66,15 @@ public class UploadController extends CommonController {
 		}
 		
 		return new Gson().toJson(resultMap);
+	}
+	
+	/**
+	 * 获取请求中 IP:端口
+	 * @param request
+	 * @return
+	 */
+	private static String getUrlInfo (HttpServletRequest request) {
+		return request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
 	}
 
 }

@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.youdy.mvc.controller.common.CommonController;
-import com.youdy.utils.PropertiesUtils;
-
 
 @RequestMapping(value = "/static")
 @Controller
@@ -22,7 +20,6 @@ public class StaticController extends CommonController {
 	public ModelAndView gotoPage(HttpServletRequest request, @PathVariable(value = "pageId") String pageId, ModelMap model) {
 		String page = getAccessPagePath(pageId);
 		LOGGER.debug("进入" + page + "页面 !");
-		PropertiesUtils.getProperty("upload_root_path");
 		return new ModelAndView(page, model);
 	}
 	

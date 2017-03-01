@@ -7,7 +7,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.LocalizedResourceHelper;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 
-public final class PropertiesUtils {
+public final class PropertiesUtil {
 	
 	private static Properties properties;
 	
@@ -16,7 +16,7 @@ public final class PropertiesUtils {
 	/**
 	 * 私有构造器
 	 */
-	private PropertiesUtils() {
+	private PropertiesUtil() {
 		
 	}
 	
