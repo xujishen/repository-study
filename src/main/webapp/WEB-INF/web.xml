@@ -81,7 +81,6 @@
   	<servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
   	<init-param>
 		<param-name>com.sun.jersey.config.property.packages</param-name>
-		<!--代表的是你服务端的路径,要和你的工程服务器端路径保持一致-->
 	  	<param-value>com.youdy.rest.jersey</param-value>
 	</init-param>
   	<load-on-startup>2</load-on-startup>
