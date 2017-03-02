@@ -1,17 +1,13 @@
 package com.youdy.utils;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.nio.charset.Charset;
 import java.util.UUID;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * The file util class for operate the file.
@@ -29,6 +25,9 @@ public final class FileUtil {
 	 * 分隔符
 	 */
 	private static final String SEPARATE_SYMBOL = "-".intern();
+	
+
+	private static final Log LOGGER = LogFactory.getLog(FileUtil.class);
 	
 	/**
 	 * 生成随机文件名
@@ -59,35 +58,54 @@ public final class FileUtil {
 		return new FileSeparate();
 	};
 	
-	public static String doUpload(final InputStream is, final String path) {
-		System.out.println(path);
-		InputStreamReader reader = new InputStreamReader(is, Charset.forName("UTF-8"));
-		BufferedReader buffer = new BufferedReader(reader);
-		
-		//BufferedWriter bw = new BufferedWriter(out)
-		
+	/**
+	 * 上传资源
+	 * @param is
+	 * @param path
+	 * @param fileName
+	 */
+	public static void doUpload(final InputStream is, final String path, String fileName) {
 		File file = new File(path);
 		if (file.exists()) {
 			file.delete();
 		}
 		file.mkdirs();
+		
+		FileOutputStream fileOutputStream = null;
+		
 		try {
-			FileOutputStream fileOutputStream = new FileOutputStream(file);
-			try {
-				fileOutputStream.write(buffer.read());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			fileOutputStream = new FileOutputStream(new File(path, fileName));
+			
+			/**
+			 * 读取频率4k
+			 */
+			byte[] bytes = new byte[1024 * 4];
+			long count = 0;
+		    int n = 0;
+			while ( ( n = is.read(bytes) ) != -1 ) {
+				fileOutputStream.write(bytes, 0, n);
+	            count += n;
 			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			fileOutputStream.flush();
+			LOGGER.info("读取文件大小: " + count);
+			
+		} catch (Exception e) {
 			e.printStackTrace();
+			LOGGER.info("写入文件错误: e=" + e.getMessage());
 		}
 		
-//		buffer.
-//		OutputStream os = new OutputStreamWriter(out)
+		finally {
+			if (fileOutputStream != null) {
+				try {
+					fileOutputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+					LOGGER.info("关闭fileOutputStream错误: e=" + e.getMessage());
+				}
+			}
+		}
 		
-		return "";
+		return;
 	}
 	
 	/**

@@ -20,6 +20,16 @@ import com.youdy.mvc.controller.common.CommonController;
 import com.youdy.utils.FileUtil;
 import com.youdy.utils.PropertiesUtil;
 
+/**
+ * 上传控制器
+ * @File: UploadController.java
+ * @package com.youdy.rest.jersey
+ * @author 宿继申 
+ * @date: 2017年3月2日 下午5:18:20
+ * @version 1.0
+ * @Copyright (C) 2008-2017 www.oneapm.com. all rights reserved.
+ *
+ */
 @Path(value = "/upload")
 public class UploadController extends CommonController {
 
@@ -45,22 +55,25 @@ public class UploadController extends CommonController {
 			if (disposition != null && ( (fileName = disposition.getFileName()) != null) ) {
 				String randomFileName = FileUtil.generateRandomFileName(fileName);
 				
-				String uploadUrlPrefix = getUrlInfo(request);
-				
 				// Image上传路径
-				String imgRootPath = uploadUrlPrefix + PropertiesUtil.getProperty(SystemPropertiesEnum.UPLOAD_ROOT_PATH.getValue()) + 
-						PropertiesUtil.getProperty(SystemPropertiesEnum.IMG_ROOT_PATH.getValue()) + "/" +
-						randomFileName;
+				String imgRootPath = ( PropertiesUtil.getProperty(SystemPropertiesEnum.UPLOAD_ROOT_PATH.getValue()) + 
+						PropertiesUtil.getProperty(SystemPropertiesEnum.IMG_ROOT_PATH.getValue()) ).replace("\\", "/");
 				
-				FileUtil.doUpload(is, imgRootPath);
+				// 上传资源
+				FileUtil.doUpload(is, imgRootPath, randomFileName);
+				resultMap.put("code", SUCCESS_CODE);
+				resultMap.put("msg", "成功");
+				resultMap.put("data", randomFileName);
 			}
-			resultMap.put("code", SUCCESS_CODE);
-			resultMap.put("msg", "成功");
 		}
 		catch (Exception e)
 		{
 			LOGGER.error("数据请求异常, cause: " + e.getMessage());
 			e.printStackTrace();
+			
+			/**
+			 * 回滚逻辑
+			 */
 			resultMap.put("code", EXCEPTION_CODE);
 			resultMap.put("msg", "接口异常, cause: " + e.getMessage());
 		}
@@ -73,6 +86,7 @@ public class UploadController extends CommonController {
 	 * @param request
 	 * @return
 	 */
+	@SuppressWarnings("unused")
 	private static String getUrlInfo (HttpServletRequest request) {
 		return request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
 	}

@@ -15,7 +15,8 @@ $().ready(function() {
         ajaxOptions: {},
         onUpload: function () {
         },
-        onEachUpload: function () {
+        onEachUpload: function (data) {
+        	console.log(data);
         },
         beforeUpload: function () {
         },
