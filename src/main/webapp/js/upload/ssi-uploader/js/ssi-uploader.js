@@ -590,7 +590,8 @@
                             uploadStatus: dataType,
                             name: thisS.toUpload[ii].name,
                             size: (thisS.toUpload[ii].size / 1024).toFixed(2),
-                            type: thisS.toUpload[ii].type
+                            type: thisS.toUpload[ii].type,
+                            _responseData: data
                         });
                     } catch (err) {
                         console.log('There is an error in onEachUpload callback');
