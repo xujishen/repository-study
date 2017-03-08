@@ -60,7 +60,7 @@ public class UploadController extends CommonController {
 						PropertiesUtil.getProperty(SystemPropertiesEnum.IMG_ROOT_PATH.getValue()) ).replace("\\", "/");
 				
 				// 上传资源
-				FileUtil.doUpload(is, imgRootPath, randomFileName);
+				FileUtil.doUpload(is, imgRootPath, randomFileName, true);
 				resultMap.put("code", SUCCESS_CODE);
 				resultMap.put("msg", "成功");
 				resultMap.put("data", randomFileName);

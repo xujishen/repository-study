@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.UUID;
 
 import org.apache.commons.logging.Log;
@@ -59,42 +61,41 @@ public final class FileUtil {
 	};
 	
 	/**
-	 * 上传资源
-	 * @param is
-	 * @param path
-	 * @param fileName
+	 * BIO上传
+	 * @param is - 输入流
+	 * @param file - 文件对象
 	 */
-	public static void doUpload(final InputStream is, final String path, String fileName) {
-		File file = new File(path);
-		if (file.exists()) {
-			file.delete();
-		}
-		file.mkdirs();
-		
+	private static void doUploadForBio(final InputStream is, final File file) {
 		FileOutputStream fileOutputStream = null;
-		
 		try {
-			fileOutputStream = new FileOutputStream(new File(path, fileName));
-			
+			fileOutputStream = new FileOutputStream(file);
 			/**
 			 * 读取频率4k
 			 */
 			byte[] bytes = new byte[1024 * 4];
 			long count = 0;
 		    int n = 0;
+		    long t = System.currentTimeMillis();
 			while ( ( n = is.read(bytes) ) != -1 ) {
 				fileOutputStream.write(bytes, 0, n);
-	            count += n;
+			    count += n;
 			}
-			fileOutputStream.flush();
+			System.out.println("BIO上传耗时: " + (System.currentTimeMillis() - t));
 			LOGGER.info("读取文件大小: " + count);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			LOGGER.info("写入文件错误: e=" + e.getMessage());
+			fileOutputStream.flush();
+		} catch (Exception e1) {
+			e1.printStackTrace();
 		}
-		
+			
 		finally {
+			if (is != null) {
+				try {
+					is.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+					LOGGER.info("关闭is错误: e=" + e.getMessage());
+				}
+			}
 			if (fileOutputStream != null) {
 				try {
 					fileOutputStream.close();
@@ -104,7 +105,76 @@ public final class FileUtil {
 				}
 			}
 		}
+	}
+	
+	/**
+	 * Nio上传
+	 * @param is - 输入流
+	 * @param fileOutputStream - 输出流
+	 */
+	@SuppressWarnings("resource")
+	private static void doUploadForNio(final InputStream is, File file) {
+		FileChannel outChannel;
+		try {
+			outChannel = //FileChannel.open(Paths.get(path, fileName), EnumSet.of(StandardOpenOption.WRITE));
+					new FileOutputStream(file).getChannel();
+			ByteBuffer byteBuffer = ByteBuffer.allocate(4 * 1024);
+			byte[] bytes = new byte[4 * 1024];
+			
+			try {
+				long t = System.currentTimeMillis();
+				while ( is.read(bytes) > 0 ) {
+					byteBuffer.put(bytes);
+					byteBuffer.flip();  
+					outChannel.write(byteBuffer);
+					byteBuffer.clear();  
+				}
+				System.out.println("NIO上传耗时: " + (System.currentTimeMillis() - t));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+	
+	}
+	
+	/**
+	 * 上传资源
+	 * @param is - 输入流
+	 * @param path - 服务的文件路径
+	 * @param fileName - 文件名称
+	 */
+	public static void doUpload(final InputStream is, final String path, final String fileName, boolean nio) {
+		File file = new File(path);
+		if (file.exists()) {
+			file.delete();
+		}
+		file.mkdirs();
 		
+		file = new File(path + "/" + fileName);
+		
+		if (!file.exists()) {
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				LOGGER.info("创建文件(" + file + ")出错, e=" + e.getMessage());
+				return;
+			}
+		}
+		
+		/**
+		 * BIO
+		 */
+		if (!nio) {
+			doUploadForBio(is, file);
+		}
+		/**
+		 * NIO
+		 */
+		else {
+			doUploadForNio(is, file);
+		}
 		return;
 	}
 	
