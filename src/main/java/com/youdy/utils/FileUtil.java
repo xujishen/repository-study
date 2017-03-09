@@ -1,15 +1,30 @@
 package com.youdy.utils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
+import java.nio.channels.AsynchronousChannel;
+import java.nio.channels.AsynchronousFileChannel;
+import java.nio.channels.AsynchronousServerSocketChannel;
 import java.nio.channels.FileChannel;
+import java.nio.file.OpenOption;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.nio.file.attribute.FileAttribute;
+import java.util.EnumSet;
+import java.util.HashSet;
 import java.util.UUID;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import io.netty.channel.Channel;
 
 /**
  * The file util class for operate the file.
@@ -107,23 +122,43 @@ public final class FileUtil {
 		}
 	}
 	
+	
+	private static void doUploadForNio2(final InputStream is, File file) {
+		try {
+			AsynchronousChannel fileChannel = AsynchronousFileChannel.open(Paths.get(file.toURI()),
+					new HashSet<StandardOpenOption>(
+							EnumSet.of(StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE)),
+					Executors.newSingleThreadExecutor(Executors.defaultThreadFactory()), null);
+			
+			ByteBuffer buffer = ByteBuffer.allocateDirect(ThreadLocalRandom.current().nextInt());
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	/**
-	 * Nio上传
+	 * Nio上传 (base on Java 1.4)
 	 * @param is - 输入流
 	 * @param fileOutputStream - 输出流
 	 */
-	@SuppressWarnings("resource")
 	private static void doUploadForNio(final InputStream is, File file) {
-		FileChannel outChannel;
+		// 输出管道
+		FileChannel outChannel = null;
+		// 输入管道
+		FileChannel inChannel = null;
+		
 		try {
-			outChannel = //FileChannel.open(Paths.get(path, fileName), EnumSet.of(StandardOpenOption.WRITE));
-					new FileOutputStream(file).getChannel();
-			ByteBuffer byteBuffer = ByteBuffer.allocate(4 * 1024);
+			outChannel = FileChannel.open(Paths.get(file.toURI()), EnumSet.of(StandardOpenOption.WRITE));
+					//new FileOutputStream(file).getChannel();
+			//inChannel = ((FileInputStream) is).getChannel();
+			ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * 1024);
+			
 			byte[] bytes = new byte[4 * 1024];
 			
 			try {
 				long t = System.currentTimeMillis();
-				while ( is.read(bytes) > 0 ) {
+				while ( is.read(bytes) != -1 ) {
 					byteBuffer.put(bytes);
 					byteBuffer.flip();  
 					outChannel.write(byteBuffer);
@@ -136,7 +171,22 @@ public final class FileUtil {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-	
+		finally {
+			if (outChannel != null) {
+				try {
+					outChannel.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if (inChannel != null) {
+				try {
+					inChannel.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	
 	/**

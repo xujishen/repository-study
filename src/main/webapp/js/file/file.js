@@ -7,8 +7,8 @@ $().ready(function() {
 	 */
 	$('#ssi-upload').ssi_uploader({
 		url: _CONTEXTPATH + modelName + '/multis',
-		maxFileSize: 6,
-		allowed: ['jpg','gif','txt','png','pdf'],
+		maxFileSize: 266,
+		allowed: ['jpg','gif','txt','png','pdf', 'zip'],
 		data: {},
         locale: 'chn',
         preview: true,
