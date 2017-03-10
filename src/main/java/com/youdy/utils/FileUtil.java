@@ -11,6 +11,7 @@ import java.nio.channels.AsynchronousFileChannel;
 import java.nio.channels.AsynchronousServerSocketChannel;
 import java.nio.channels.FileChannel;
 import java.nio.file.OpenOption;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.nio.file.attribute.FileAttribute;
@@ -123,17 +124,43 @@ public final class FileUtil {
 	}
 	
 	
-	private static void doUploadForNio2(final InputStream is, File file) {
+	private static void doUploadForNio2(final InputStream is, Path path) {
+		AsynchronousFileChannel fileChannel = null;
 		try {
-			AsynchronousChannel fileChannel = AsynchronousFileChannel.open(Paths.get(file.toURI()),
+			fileChannel = AsynchronousFileChannel.open(path,
 					new HashSet<StandardOpenOption>(
 							EnumSet.of(StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE)),
 					Executors.newSingleThreadExecutor(Executors.defaultThreadFactory()), null);
 			
-			ByteBuffer buffer = ByteBuffer.allocateDirect(ThreadLocalRandom.current().nextInt());
+			ByteBuffer buffer = ByteBuffer.allocateDirect(4 * 1024);
+			
+			byte[] bytes = new byte[4 * 1024];
+			
+			while (is.read(bytes) != -1) {
+				buffer.put(bytes);
+				buffer.flip();
+				fileChannel.write(buffer, 0);
+			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+		
+		finally {
+			if (fileChannel != null) {
+				try {
+					fileChannel.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}	
+			}
+			if (is != null) {
+				try {
+					is.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}	
+			}
 		}
 	}
 	
@@ -142,16 +169,12 @@ public final class FileUtil {
 	 * @param is - 输入流
 	 * @param fileOutputStream - 输出流
 	 */
-	private static void doUploadForNio(final InputStream is, File file) {
+	private static void doUploadForNio(final InputStream is, Path path) {
 		// 输出管道
 		FileChannel outChannel = null;
-		// 输入管道
-		FileChannel inChannel = null;
 		
 		try {
-			outChannel = FileChannel.open(Paths.get(file.toURI()), EnumSet.of(StandardOpenOption.WRITE));
-					//new FileOutputStream(file).getChannel();
-			//inChannel = ((FileInputStream) is).getChannel();
+			outChannel = FileChannel.open(path, EnumSet.of(StandardOpenOption.WRITE));
 			ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * 1024);
 			
 			byte[] bytes = new byte[4 * 1024];
@@ -179,9 +202,9 @@ public final class FileUtil {
 					e.printStackTrace();
 				}
 			}
-			if (inChannel != null) {
+			if (is != null) {
 				try {
-					inChannel.close();
+					is.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -196,34 +219,33 @@ public final class FileUtil {
 	 * @param fileName - 文件名称
 	 */
 	public static void doUpload(final InputStream is, final String path, final String fileName, boolean nio) {
-		File file = new File(path);
-		if (file.exists()) {
-			file.delete();
-		}
-		file.mkdirs();
-		
-		file = new File(path + "/" + fileName);
-		
-		if (!file.exists()) {
-			try {
-				file.createNewFile();
-			} catch (IOException e) {
-				LOGGER.info("创建文件(" + file + ")出错, e=" + e.getMessage());
-				return;
-			}
-		}
-		
 		/**
 		 * BIO
 		 */
 		if (!nio) {
+			File file = new File(path);
+			if (file.exists()) {
+				file.delete();
+			}
+			file.mkdirs();
+			
+			file = new File(path + "/" + fileName);
+			
+			if (!file.exists()) {
+				try {
+					file.createNewFile();
+				} catch (IOException e) {
+					LOGGER.info("创建文件(" + file + ")出错, e=" + e.getMessage());
+					return;
+				}
+			}
 			doUploadForBio(is, file);
 		}
 		/**
 		 * NIO
 		 */
 		else {
-			doUploadForNio(is, file);
+			doUploadForNio2(is, Paths.get(path, fileName));
 		}
 		return;
 	}
