@@ -1,4 +1,4 @@
-var modelName = "/rest/upload";
+var modelName = "/rest/file";
 
 $().ready(function() {
 
@@ -6,8 +6,8 @@ $().ready(function() {
 	 * 初始化上传区域
 	 */
 	$('#ssi-upload').ssi_uploader({
-		url: _CONTEXTPATH + modelName + '/multis',
-		maxFileSize: 266,
+		url: _CONTEXTPATH + modelName + '/upload/multis',
+		maxFileSize: 26666,
 		allowed: ['jpg','gif','txt','png','pdf', 'zip'],
 		data: {},
         locale: 'chn',
@@ -35,6 +35,7 @@ $().ready(function() {
         	bean.originalFileName = originalFileName;
         	bean.fileType = fileType;
         	bean.fileSize = fileSize;
+        	console.log(JSON.stringify(bean));
         },
         beforeUpload: function () {
         },

@@ -22,7 +22,7 @@ import com.youdy.utils.PropertiesUtil;
 
 /**
  * 上传控制器
- * @File: UploadController.java
+ * @File: FileController.java
  * @package com.youdy.rest.jersey
  * @author 宿继申 
  * @date: 2017年3月2日 下午5:18:20
@@ -30,8 +30,8 @@ import com.youdy.utils.PropertiesUtil;
  * @Copyright (C) 2008-2017 www.oneapm.com. all rights reserved.
  *
  */
-@Path(value = "/upload")
-public class UploadController extends CommonController {
+@Path(value = "/file")
+public class FileController extends CommonController {
 
 	private static final long serialVersionUID = -5638731468974812822L;
 	
@@ -41,7 +41,7 @@ public class UploadController extends CommonController {
 	 * @param body
 	 * @return
 	 */
-	@Path(value = "/multis")
+	@Path(value = "/upload/multis")
 	@POST
 	@Produces({MediaType.APPLICATION_JSON})
 	@Consumes({ MediaType.MULTIPART_FORM_DATA })

@@ -10,6 +10,7 @@ import java.nio.channels.AsynchronousChannel;
 import java.nio.channels.AsynchronousFileChannel;
 import java.nio.channels.AsynchronousServerSocketChannel;
 import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
 import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -228,8 +229,8 @@ public final class FileUtil {
 				file.delete();
 			}
 			file.mkdirs();
-			
-			file = new File(path + "/" + fileName);
+			String newFilePath = new String((path + "/" + fileName).getBytes());
+			file = new File(newFilePath);
 			
 			if (!file.exists()) {
 				try {
