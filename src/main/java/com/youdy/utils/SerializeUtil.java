@@ -30,34 +30,18 @@ public final class SerializeUtil {
      */
     public static <T> byte[] doSerialize(T t) {
         if (t == null) {
-            return null;
+            return new byte[0];
         }
-        ByteArrayOutputStream baos = null;
-        ObjectOutputStream oos = null;
-        try {
-            baos = new ByteArrayOutputStream();
-            oos = new ObjectOutputStream(baos);
+        try (
+    		ByteArrayOutputStream baos = new ByteArrayOutputStream(); 
+    		ObjectOutputStream oos = new ObjectOutputStream(baos);
+        ) {
             oos.writeObject((Object) t);
             return baos.toByteArray();
         } catch (Exception e) {
             e.printStackTrace();
-            logger.log(Level.WARNING, "反序列化对象<" + t + ">失败, 原因: " + e.getMessage(), new Throwable());
+            logger.log(Level.WARNING, "序列化对象<" + t + ">失败, 原因: " + e.getMessage(), new Throwable());
             return null;
-        } finally {
-            if (baos != null) {
-                try {
-                    baos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (oos != null) {
-                try {
-                    oos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 
@@ -71,31 +55,16 @@ public final class SerializeUtil {
         if (bytes == null || bytes.length < 1) {
             return null;
         }
-        ByteArrayInputStream bais = null;
-        ObjectInputStream ois = null;
-        try {
-            bais = new ByteArrayInputStream(bytes);
-            ois = new ObjectInputStream(bais);
+        try (ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+        		ObjectInputStream ois = new ObjectInputStream(bais);)
+        {
             return (T) ois.readObject();
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
             logger.log(Level.WARNING, "反序列化对象<" + bytes + ">失败, 原因: " + e.getMessage(), new Throwable());
             return null;
-        } finally {
-            if (bais != null) {
-                try {
-                    bais.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (ois != null) {
-                try {
-                    ois.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 }

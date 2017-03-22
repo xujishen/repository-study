@@ -229,7 +229,7 @@ public final class FileUtil {
 				file.delete();
 			}
 			file.mkdirs();
-			String newFilePath = new String((path + "/" + fileName).getBytes());
+			String newFilePath = new String((path + "/" + fileName).getBytes(Charset.forName("UTF-8")));
 			file = new File(newFilePath);
 			
 			if (!file.exists()) {
