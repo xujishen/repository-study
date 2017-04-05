@@ -126,12 +126,16 @@ public final class FileUtil {
 	
 	
 	private static void doUploadForNio2(final InputStream is, Path path) {
-		AsynchronousFileChannel fileChannel = null;
-		try {
-			fileChannel = AsynchronousFileChannel.open(path,
+		//AsynchronousFileChannel fileChannel = null;
+		try (
+				AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE);
+			) {
+			/*fileChannel = AsynchronousFileChannel.open(path,
 					new HashSet<StandardOpenOption>(
 							EnumSet.of(StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE)),
-					Executors.newSingleThreadExecutor(Executors.defaultThreadFactory()), null);
+					Executors.newSingleThreadExecutor(Executors.defaultThreadFactory()), null);*/
+			
+			//fileChannel = AsynchronousFileChannel.open(path,StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE);
 			
 			ByteBuffer buffer = ByteBuffer.allocateDirect(4 * 1024);
 			
@@ -148,13 +152,6 @@ public final class FileUtil {
 		}
 		
 		finally {
-			if (fileChannel != null) {
-				try {
-					fileChannel.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}	
-			}
 			if (is != null) {
 				try {
 					is.close();
@@ -171,11 +168,11 @@ public final class FileUtil {
 	 * @param fileOutputStream - 输出流
 	 */
 	private static void doUploadForNio(final InputStream is, Path path) {
-		// 输出管道
-		FileChannel outChannel = null;
 		
-		try {
-			outChannel = FileChannel.open(path, EnumSet.of(StandardOpenOption.WRITE));
+		try (
+			// 输出管道
+			FileChannel outChannel = FileChannel.open(path, EnumSet.of(StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE));
+		) {
 			ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * 1024);
 			
 			byte[] bytes = new byte[4 * 1024];
@@ -196,13 +193,6 @@ public final class FileUtil {
 			e1.printStackTrace();
 		}
 		finally {
-			if (outChannel != null) {
-				try {
-					outChannel.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
 			if (is != null) {
 				try {
 					is.close();
@@ -246,7 +236,7 @@ public final class FileUtil {
 		 * NIO
 		 */
 		else {
-			doUploadForNio2(is, Paths.get(path, fileName));
+			doUploadForNio(is, Paths.get(path, fileName));
 		}
 		return;
 	}
