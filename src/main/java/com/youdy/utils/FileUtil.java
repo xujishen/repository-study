@@ -1,32 +1,21 @@
 package com.youdy.utils;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
-import java.nio.channels.AsynchronousChannel;
 import java.nio.channels.AsynchronousFileChannel;
-import java.nio.channels.AsynchronousServerSocketChannel;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
-import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.nio.file.attribute.FileAttribute;
 import java.util.EnumSet;
-import java.util.HashSet;
 import java.util.UUID;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadLocalRandom;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import io.netty.channel.Channel;
 
 /**
  * The file util class for operate the file.
@@ -125,6 +114,7 @@ public final class FileUtil {
 	}
 	
 	
+	@SuppressWarnings("unused")
 	private static void doUploadForNio2(final InputStream is, Path path) {
 		//AsynchronousFileChannel fileChannel = null;
 		try (
@@ -244,7 +234,6 @@ public final class FileUtil {
 	/**
 	 * The inner class for abstracting the file-name & file-extension
 	 **/
-	@SuppressWarnings("unused")
 	private static final class FileSeparate {
 		private String fileName;
 		private String extension;
@@ -259,14 +248,8 @@ public final class FileUtil {
 		public String getFileName() {
 			return fileName;
 		}
-		public void setFileName(String fileName) {
-			this.fileName = fileName;
-		}
 		public String getExtension() {
 			return extension;
-		}
-		public void setExtension(String extension) {
-			this.extension = extension;
 		}
 		
 		/**
