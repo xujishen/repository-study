@@ -310,7 +310,21 @@
 	    <artifactId>libthrift</artifactId>
 	    <version>${libthrift.version}</version>
 	</dependency>
-		
+	
+	<!-- Solr Start -->
+	<dependency>
+	    <groupId>org.apache.solr</groupId>
+	    <artifactId>solr-core</artifactId> 
+	    <version>6.5.0</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.solr</groupId>
+	    <artifactId>solr-solrj</artifactId>
+	    <version>6.5.0</version>
+	</dependency>
+	<!-- Solr End -->
+	
+	
   </dependencies>
   
   <build>
