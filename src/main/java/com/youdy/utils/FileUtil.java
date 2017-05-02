@@ -155,7 +155,7 @@ public final class FileUtil {
 	/**
 	 * Nio上传 (base on Java 1.4)
 	 * @param is - 输入流
-	 * @param fileOutputStream - 输出流
+	 * @param path - 输出路径
 	 */
 	private static void doUploadForNio(final InputStream is, Path path) {
 		
@@ -238,17 +238,17 @@ public final class FileUtil {
 		private String fileName;
 		private String extension;
 		
-		public FileSeparate(){}
-		
-		public FileSeparate(String fileName, String extension) {
+		private FileSeparate(){}
+
+		private FileSeparate(String fileName, String extension) {
 			this.fileName = fileName;
 			this.extension = extension;
 		}
-		
-		public String getFileName() {
+
+		private String getFileName() {
 			return fileName;
 		}
-		public String getExtension() {
+		private String getExtension() {
 			return extension;
 		}
 		
