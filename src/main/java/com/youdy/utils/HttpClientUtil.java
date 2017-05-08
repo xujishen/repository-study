@@ -2,7 +2,6 @@ package com.youdy.utils;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.nio.charset.Charset;
 import java.util.List;
 
 import org.apache.http.HttpEntity;
@@ -13,10 +12,8 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.params.CoreConnectionPNames;
-import org.apache.http.protocol.HttpContext;
 
 @SuppressWarnings("deprecation")
 public class HttpClientUtil {
@@ -132,9 +129,4 @@ public class HttpClientUtil {
 		return responseString;
 	}
 	
-	public static void main(String[] args) {
-		String url = "http://10.128.9.160:8090/api/v2/applications/response%20time?openid=9&application_name=MyTier_lxs_demo_Informix_0001&span_time=3600000&interval=300000";
-		String str = HttpClientUtil.doGet(url);
-		System.out.println(str);
-	}
 }
