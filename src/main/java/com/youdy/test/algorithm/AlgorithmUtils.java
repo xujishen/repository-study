@@ -34,4 +34,15 @@ public final class AlgorithmUtils {
 		
 	}
 	
+	/**
+     * 交换
+     * @param m - 被交换的第一个元素位置
+     * @param n - 被交换的第二个元素位置
+     */
+	public synchronized static void swapInt(int[] arr, int m, int n) {
+        int x = arr[m];
+        arr[m] = arr[n];
+        arr[n] = x;
+    }
+	
 }
