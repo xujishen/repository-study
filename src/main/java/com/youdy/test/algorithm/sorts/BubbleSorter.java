@@ -30,7 +30,7 @@ public class BubbleSorter implements Sorter {
 				if (curr > next) {
 					AlgorithmUtils.swapInt(arr, j - 1, j); // 此处第一个参数 j - 1很重要
 				}
-				curr = arr[j]; // curr 的值应该换成arr[j], 很重要! 无论比较结果如何都应该这么做, 冒泡所在之处就是.
+				curr = arr[j]; // curr 的值应该换成arr[j], 因为curr就是最大的那个, 很重要! 无论比较结果如何都应该这么做, 冒泡所在之处.
 			}
 		}
 		long t1 = System.currentTimeMillis();
