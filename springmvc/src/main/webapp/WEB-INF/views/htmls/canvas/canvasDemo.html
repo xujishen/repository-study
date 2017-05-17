@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas Demo Page</title>
+</head>
+    <div id="canvas-div" align="center" style="border: 2px solid red; border-color: red; width: 750px; height: 700%;
+        background: #858384;">
+        <canvas id="demo-canvs" width="500" height="600">
+
+        </canvas>
+    </div>
+<body>
+
+
+<script type="text/javascript">
+    var canvas = document.getElementById("demo-canvs");
+    var context = canvas.getContext("2d");
+    var img = new Image();
+    img.src = "canvas-demo.jpg";
+    drawCirle();
+
+    /**
+     * 绘制圆形
+     */
+    function drawCirle() {
+        context.beginPath();
+        context.arc(250, 265, 210, 0, 2 * Math.PI, false);
+        context.strokeStyle = '#33d639';
+        //context.fillStyle = '#7f233'//rgba(0, 0, 0, 0);
+        context.lineWidth = 40;
+        context.drawImage(img, 115, 140);
+        context.stroke();
+        //context.fill();
+        context.closePath();
+    }
+</script>
+
+</body>
+</html>
