@@ -6,7 +6,7 @@
 </head>
     <div id="canvas-div" align="center" style="border: 2px solid red; border-color: red; width: 750px; height: 700%;
         background: #858384;">
-        <canvas id="demo-canvs" width="500" height="600">
+        <canvas id="demo-canvas" width="500" height="600">
 
         </canvas>
     </div>
@@ -14,24 +14,56 @@
 
 
 <script type="text/javascript">
-    var canvas = document.getElementById("demo-canvs");
+    var canvas = document.getElementById("demo-canvas");
     var context = canvas.getContext("2d");
+    // 圆心坐标, 和半径
+    var arcX = 250; var arcY = 265; var argR = 210;
+    var lineWidth = 40;
+    // 渐变色
+    //var grd = context.createLinearGradient(arcX - argR - lineWidth, arcY - argR - lineWidth, arcX + argR + lineWidth, arcY + argR + lineWidth);
+    var grd = context.createLinearGradient(arcY, arcX - argR - lineWidth, arcY, arcX + argR + lineWidth);
     var img = new Image();
     img.src = "canvas-demo.jpg";
-    drawCirle();
+    // 画图片
+    drawImage();
+    var total = 10;
+    for (var i = 0; i < total; i ++)
+    {
+        var alpha = (total - i) / total;
+        console.log("i=" + i);
+        console.log("alpha=" + alpha);
+        grd.addColorStop(alpha,  'rgba(51, 214, 57, ' + alpha + ')');
+    }
+    drawCircle(i, total, grd);
+
 
     /**
      * 绘制圆形
      */
-    function drawCirle() {
+    function drawCircle(i, total, grd) {
+        var scale = 2 * Math.PI * 0.96; // 梯度
+        var start = 0 * scale;
+        var end = 1 * scale;
+
         context.beginPath();
-        context.arc(250, 265, 210, 0, 2 * Math.PI, false);
-        context.strokeStyle = '#33d639';
-        //context.fillStyle = '#7f233'//rgba(0, 0, 0, 0);
-        context.lineWidth = 40;
-        context.drawImage(img, 115, 140);
+        context.arc(arcX, arcY, argR, start, end, false);
+        context.strokeStyle = grd;
+        context.lineWidth = lineWidth;
+        context.lineCap = 'round';
         context.stroke();
-        //context.fill();
+        context.restore();
+        context.closePath();
+    }
+
+    function drawImage() {
+        context.beginPath();
+        if (!img.complete) {
+            img.addEventListener("load", function () {
+                context.drawImage(img, 115, 140, 272, 253);
+            })
+        } else {
+            context.drawImage(img, 115, 140, 272, 253);
+        }
         context.closePath();
     }
 </script>
