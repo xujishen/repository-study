@@ -25,8 +25,8 @@ function RotateCircle() {
     };
     this.particles = [];
     this.particleMax = 100;
-    ctx.shadowBlur = this.circle.blur;
-    ctx.shadowColor = 'hsla(' + this.circle.hue + ', 80%, 60%, 1)';
+    //ctx.shadowBlur = this.circle.blur;
+    //ctx.shadowColor = 'hsla(' + this.circle.hue + ', 80%, 60%, 1)';
     ctx.lineCap = 'round';
 
     var gradient1 = ctx.createLinearGradient(0, -this.circle.radius, 0, this.circle.radius);
@@ -42,7 +42,12 @@ function RotateCircle() {
 
 }
 RotateCircle.prototype.draw = function () {
-    setInterval(this.loop(this), 12);
+    /*window.setInterval(function (a, b) {
+        return function() {
+            b.call(a);
+        }
+    } (this, this.loop), 50);*/
+    this.loop();
 };
 RotateCircle.prototype.updateCircle = function () {
     if (this.circle.rotation < 360) {
@@ -146,14 +151,14 @@ RotateCircle.prototype.clear = function () {
     ctx.fillRect(0, 0, this.cw, this.ch);
     ctx.globalCompositeOperation = 'lighter';
 };
-RotateCircle.prototype.loop = function (self) {
-    self.clear();
-    self.updateCircle();
-    self.renderCircle();
-    self.renderCircleBorder();
-    self.renderCircleFlare();
-    self.renderCircleFlare2();
-    self.createParticles();
-    self.updateParticles();
-    self.renderParticles();
+RotateCircle.prototype.loop = function () {
+    //this.clear();
+    this.updateCircle();
+    this.renderCircle();
+    this.renderCircleBorder();
+    this.renderCircleFlare();
+    this.renderCircleFlare2();
+    this.createParticles();
+    this.updateParticles();
+    this.renderParticles();
 };
