@@ -25,7 +25,7 @@ public final class SerializeUtil {
     /**
      * 序列化对象 - 将JVM内存中的java对象序列为可被外部识别的byte数组
      *
-     * @param t
+     * @param t: 实体类
      * @return
      */
     public static <T> byte[] doSerialize(T t) {
@@ -48,7 +48,7 @@ public final class SerializeUtil {
     /**
      * 反流化对象 - 将外部提过的byte数组序列化为JVM可识别的java对象
      *
-     * @param t
+     * @param bytes: 二进制数组
      */
     @SuppressWarnings("unchecked")
     public static <T> T unSerialize(byte... bytes) {
