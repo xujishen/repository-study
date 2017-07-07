@@ -1,10 +1,18 @@
 package com.youdy.mvc.controller.common;
 
 import java.io.Serializable;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 通用控制器
@@ -78,4 +86,15 @@ public class CommonController implements Serializable {
 		}
 		
 	}
+
+	public void requestToModel(HttpServletRequest request, ModelMap model) {
+		final Map<String, String[]> parameterMap = request.getParameterMap();
+		Set<Entry<String, String[]>> entrySet = parameterMap.entrySet();
+		Iterator<Entry<String, String[]>> iterator = entrySet.iterator();
+		while (iterator.hasNext()) {
+			Entry<String, String[]> next = iterator.next();
+			System.out.println("next:" + next);
+		}
+	}
+
 }

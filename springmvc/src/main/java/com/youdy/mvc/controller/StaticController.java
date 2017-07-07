@@ -16,10 +16,12 @@ import com.youdy.mvc.controller.common.CommonController;
 @SuppressWarnings("serial")
 public class StaticController extends CommonController {
 	
-	@RequestMapping(value = "/{pageId}/gotoPage.htmls", method = RequestMethod.GET)
+	@RequestMapping(path = "/{pageId}/gotoPage.htmls", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView gotoPage(HttpServletRequest request, @PathVariable(value = "pageId") String pageId, ModelMap model) {
 		String page = getAccessPagePath(pageId);
 		LOGGER.debug("进入" + page + "页面 !");
+		requestToModel(request, model);
+		System.out.println(model);
 		return new ModelAndView(page, model);
 	}
 	
