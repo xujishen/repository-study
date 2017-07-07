@@ -72,6 +72,6 @@
 		</property>
 	</bean>
 	
-	<bean id="cacheHandler" class="com.youdy.handler.CacheHandler" init-method="init" lazy-init="false" ></bean>
+	<bean id="cacheHandler" class="com.youdy.handler.CacheHandler" init-method="init" ></bean>
 	
 </beans>

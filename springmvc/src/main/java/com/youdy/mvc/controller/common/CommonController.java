@@ -10,7 +10,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -93,7 +92,7 @@ public class CommonController implements Serializable {
 		Iterator<Entry<String, String[]>> iterator = entrySet.iterator();
 		while (iterator.hasNext()) {
 			Entry<String, String[]> next = iterator.next();
-			System.out.println("next:" + next);
+			model.put(next.getKey(), request.getParameter(next.getKey()));
 		}
 	}
 

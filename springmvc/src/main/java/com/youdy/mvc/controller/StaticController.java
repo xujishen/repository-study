@@ -21,7 +21,6 @@ public class StaticController extends CommonController {
 		String page = getAccessPagePath(pageId);
 		LOGGER.debug("进入" + page + "页面 !");
 		requestToModel(request, model);
-		System.out.println(model);
 		return new ModelAndView(page, model);
 	}
 	
