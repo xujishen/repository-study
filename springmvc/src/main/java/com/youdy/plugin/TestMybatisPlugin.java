@@ -7,6 +7,7 @@ import com.youdy.bean.SysAreaBean;
 import com.youdy.mvc.service.SysAreaService;
 
 import java.io.Serializable;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
@@ -15,14 +16,17 @@ import java.util.Set;
 /**
  * Created by Su Jishen on 2017/1/10 14:58.
  */
-@Intercepts(@Signature(type = SysAreaService.class, method = "searchAreas", args = SysAreaBean.class))
+@Intercepts(@Signature(type = SysAreaService.class, method = "searchAreas", args = {SysAreaBean.class}))
 public class TestMybatisPlugin implements Interceptor, Serializable {
 
 	private static final long serialVersionUID = -4387265975123292699L;
 
 	@Override
     public Object intercept(Invocation invocation) throws Throwable {
-		System.out.println("what a fucking man !! ");
+        final Object target = invocation.getTarget();
+        final Method method = invocation.getMethod();
+        Object[] args = invocation.getArgs();
+        System.out.println("what a fucking man !! ");
         return "what a fucking man";
     }
 

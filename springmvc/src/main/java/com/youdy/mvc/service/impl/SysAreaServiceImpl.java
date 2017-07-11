@@ -1,5 +1,7 @@
 package com.youdy.mvc.service.impl;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,7 @@ public class SysAreaServiceImpl implements SysAreaService {
 	
 	@Autowired
 	SysAreaMapper areaMapper;
-	
+
 	/**
 	 * 搜索区域数据
 	 * @param SysAreaBean bean
@@ -24,6 +26,22 @@ public class SysAreaServiceImpl implements SysAreaService {
 	public List<SysAreaBean> searchAreas(SysAreaBean bean) {
 		try {
 			List<SysAreaBean> list = areaMapper.searchAreas(bean);
+			Comparator<SysAreaBean> comparator = (o1, o2) -> {
+				final Integer id1 = o1.getId();
+				final Integer id2 = o2.getId();
+				if (id1 > id2) {
+					return 1;
+				} else if (id1 < id2) {
+					return -1;
+				} else {
+					return 0;
+				}
+			};
+
+			// 基于 Lamda表达式排序
+			Collections.sort(list, comparator);
+			Collections.sort(list, (o1, o2) -> Integer.compare(o1.getAreaID(), o2.getAreaID()));
+
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -31,5 +49,5 @@ public class SysAreaServiceImpl implements SysAreaService {
 			return null;
 		}
 	}
-	
+
 }

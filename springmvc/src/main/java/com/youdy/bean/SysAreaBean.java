@@ -1,5 +1,8 @@
 package com.youdy.bean;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+
 import java.util.Date;
 
 /**
@@ -127,8 +130,10 @@ public class SysAreaBean extends CommonBean implements Comparable<SysAreaBean> {
 	}
 	@Override
 	public String toString() {
-		return "SysAreaBean [areaID=" + areaID + ", areaName=" + areaName + ", areaCode=" + areaCode + ", parentID="
-				+ parentID + ", areaLevel=" + areaLevel + ", countryID=" + countryID + ", status=" + status + "]";
+		/*return "SysAreaBean [areaID=" + areaID + ", areaName=" + areaName + ", areaCode=" + areaCode + ", parentID="
+				+ parentID + ", areaLevel=" + areaLevel + ", countryID=" + countryID + ", status=" + status + "]";*/
+		// 通过反射重写toString
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.DEFAULT_STYLE);
 	}
 
 	@Override

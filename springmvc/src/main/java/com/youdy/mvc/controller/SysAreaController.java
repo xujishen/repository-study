@@ -3,6 +3,7 @@ package com.youdy.mvc.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -53,6 +54,9 @@ public class SysAreaController extends CommonController {
 				SysAreaBean areaBean = (SysAreaBean) new Gson().fromJson(body, SysAreaBean.class);
 				
 				List<SysAreaBean> list = areaService.searchAreas(areaBean);
+
+				Stream.of(list).forEach(area -> LOGGER.info("当前区域: " + area));
+
 				resultMap.put("data", list);
 			}
 			else
