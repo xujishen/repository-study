@@ -1,9 +1,12 @@
 package com.youdy.mvc.service.impl;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.youdy.handler.AreaHandler;
+import com.youdy.mvc.annotation.ResultHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,13 +25,14 @@ public class SysAreaServiceImpl implements SysAreaService {
 	 * @param SysAreaBean bean
 	 * @return
 	 */
+	@ResultHandler(clazz = AreaHandler.class, method = "handleAreaResult", args = {Collection.class})
 	@Override
 	public List<SysAreaBean> searchAreas(SysAreaBean bean) {
 		try {
 			List<SysAreaBean> list = areaMapper.searchAreas(bean);
 			Comparator<SysAreaBean> comparator = (o1, o2) -> {
-				final Integer id1 = o1.getId();
-				final Integer id2 = o2.getId();
+				final Integer id1 = o1.getAreaID();
+				final Integer id2 = o2.getAreaID();
 				if (id1 > id2) {
 					return 1;
 				} else if (id1 < id2) {

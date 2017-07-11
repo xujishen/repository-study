@@ -1,5 +1,6 @@
 package com.youdy.plugin;
 
+import com.youdy.mvc.service.impl.SysAreaServiceImpl;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.plugin.*;
 
@@ -16,7 +17,7 @@ import java.util.Set;
 /**
  * Created by Su Jishen on 2017/1/10 14:58.
  */
-@Intercepts(@Signature(type = SysAreaService.class, method = "searchAreas", args = {SysAreaBean.class}))
+@Intercepts(@Signature(type = SysAreaServiceImpl.class, method = "searchAreas", args = {SysAreaBean.class}))
 public class TestMybatisPlugin implements Interceptor, Serializable {
 
 	private static final long serialVersionUID = -4387265975123292699L;
@@ -27,7 +28,7 @@ public class TestMybatisPlugin implements Interceptor, Serializable {
         final Method method = invocation.getMethod();
         Object[] args = invocation.getArgs();
         System.out.println("what a fucking man !! ");
-        return "what a fucking man";
+        return invocation.proceed();
     }
 
     @Override
