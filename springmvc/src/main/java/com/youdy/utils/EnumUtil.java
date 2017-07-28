@@ -1,19 +1,16 @@
 package com.youdy.utils;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.youdy.constants.SystemPropertiesEnum;
-import org.apache.commons.collections.bag.SynchronizedSortedBag;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * 枚举工具类
@@ -40,23 +37,14 @@ public final class EnumUtil {
      * @date 2016年1月15日 上午10:15:59
      */
     public static <T> List<Map<String, Object>> iterateEnum(Class<T> clazz) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
-        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
         if (clazz != null && clazz.isEnum()) {
             T[] enums = clazz.getEnumConstants();
             if (enums != null && enums.length > 0) {
                 if (LOG.isDebugEnabled()) {
                     LOG.debug("Iterate the enum class: " + clazz.getName());
                 }
-
+                List<Map<String, Object>> result = new ArrayList<Map<String, Object>>(enums.length);
                 Field[] fields = clazz.getDeclaredFields();
-                for (Field field : fields) {
-                    System.out.println(field.getGenericType());
-                }
-                Method[] declaredMethods = clazz.getDeclaredMethods();
-                for (Method declaredMethod : declaredMethods) {
-                    System.out.println(declaredMethod.getName());
-                }
-
                 for (T t : enums) {
                     for (Field field : fields) {
                         if (field.isEnumConstant() || field.isSynthetic()) {
@@ -73,11 +61,12 @@ public final class EnumUtil {
                     }
 
                 }
+                return result;
             }
         } else {
             new IllegalArgumentException("The clazz " + clazz + " is not an enum class ! ");
         }
-        return result;
+        return null;
     }
 
     /**
@@ -118,9 +107,5 @@ public final class EnumUtil {
         }
         return null;
     }
-
-    public static void main(String[] args) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
-        System.out.println(iterateEnum(SystemPropertiesEnum.class));
-    }
-
+    
 }

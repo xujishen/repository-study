@@ -45,6 +45,7 @@ public class SysAreaServiceImpl implements SysAreaService {
 			// 基于 Lamda表达式排序
 			Collections.sort(list, comparator);
 			Collections.sort(list, (o1, o2) -> Integer.compare(o1.getAreaID(), o2.getAreaID()));
+			list.sort(Comparator.comparing(SysAreaBean :: getAreaID));
 
 			return list;
 		} catch (Exception e) {

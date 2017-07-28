@@ -3,7 +3,7 @@ package com.youdy.bean;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * 系统区域实体Bean
@@ -130,8 +130,6 @@ public class SysAreaBean extends CommonBean implements Comparable<SysAreaBean> {
 	}
 	@Override
 	public String toString() {
-		/*return "SysAreaBean [areaID=" + areaID + ", areaName=" + areaName + ", areaCode=" + areaCode + ", parentID="
-				+ parentID + ", areaLevel=" + areaLevel + ", countryID=" + countryID + ", status=" + status + "]";*/
 		// 通过反射重写toString
 		return ToStringBuilder.reflectionToString(this, ToStringStyle.DEFAULT_STYLE);
 	}
@@ -139,18 +137,14 @@ public class SysAreaBean extends CommonBean implements Comparable<SysAreaBean> {
 	@Override
 	public int compareTo(SysAreaBean o) {
 		if (o != null) {
-			Date oCreateTime = o.getCreateTime();
-			long oCreateTimeMili = oCreateTime.getTime();
-			
+			long oCreateTimeMili = o.getCreateTime().getTime();
 			long cCreateTimeMili = super.getCreateTime().getTime();
-			
-			if (oCreateTimeMili > cCreateTimeMili) {
-				return 1;
-			} else if (oCreateTimeMili < cCreateTimeMili) {
-				return -1;
-			} else {
-				return 0;
-			}
+
+			Calendar c1 = Calendar.getInstance();
+			Calendar c2 = Calendar.getInstance();
+			c1.setTimeInMillis(oCreateTimeMili);
+			c2.setTimeInMillis(cCreateTimeMili);
+			return  c1.compareTo(c2);
 		}
 		return 0;
 	}

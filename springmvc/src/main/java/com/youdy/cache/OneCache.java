@@ -1,14 +1,10 @@
 package com.youdy.cache;
 
+import com.youdy.bean.UserBean;
+import redis.clients.jedis.Jedis;
+
 import java.io.Serializable;
 import java.util.Date;
-
-import com.youdy.bean.UserBean;
-import com.youdy.utils.SerializeUtil;
-
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
 
 public class OneCache implements Serializable {
 	
@@ -19,8 +15,24 @@ public class OneCache implements Serializable {
 	// 无参构造方法
 	public OneCache() {
 		if (cache == null) {
-			cache = new Jedis("10.128.7.111", 6379);
-			//cache.auth("xujishen");
+			cache = new Jedis("10.128.7.35", 6378);
+			//cache.auth("requirepass");
+			
+			/**
+			 * (1). Redis中的字符串是基于SDS(Simple Dynamic String)存储的.
+			 * (2). Sadd是基于
+			 * (3). lpush是基于双端列表存储数据
+			 * (4). hset是基于哈希字典存储数据
+			 * (5). zadd是基于跳跃表
+			 *
+			 * ziplist压缩列表, intset是内存映射数据结构
+			 * 其中intset只能升级不能降级是有序不重复
+			 */
+			cache.set("", "");  // 设置key Value
+			cache.sadd("", "", "");
+			cache.lpush("", "", "");
+			cache.zadd("", 1, "");
+			cache.hset("", "", "");
 		}
 	}
 	
@@ -92,9 +104,15 @@ public class OneCache implements Serializable {
     public String ping() {
         return cache.ping();
     }
+
+    public void close() {
+		cache.close();
+	}
 	
 	public static void main(String[] args) {
 		OneCache onec = new OneCache();
+		System.out.println(onec.dbSize());
+		onec.close();
 		for (int i = 0; i < 100; i ++) {
 			UserBean ub = new UserBean();
 			ub.setUserId(i);

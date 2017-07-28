@@ -1,15 +1,11 @@
 package com.youdy.plugin;
 
-import com.youdy.mvc.service.impl.SysAreaServiceImpl;
-import org.apache.ibatis.executor.Executor;
-import org.apache.ibatis.plugin.*;
-
 import com.youdy.bean.SysAreaBean;
-import com.youdy.mvc.service.SysAreaService;
+import com.youdy.mvc.service.impl.SysAreaServiceImpl;
+import org.apache.ibatis.plugin.*;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
