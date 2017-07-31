@@ -1,11 +1,26 @@
-/**
- * js公共文件, si_common.js和common-1.0.1.js由王婧统一维护.
- */
 
 //--------------------------------//
 /**
  * 对象工具类
  */
+ 
+(function() {
+    var noop = function noop() {};
+    var methods = [
+        'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
+        'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
+        'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
+        'timeStamp', 'trace', 'warn'
+    ];
+    var length = methods.length;
+    var console = window.console || {};
+
+    while (length--) {
+        // Only stub undefined methods.
+        console[methods[length]] = console[methods[length]] || noop;
+    }
+}());
+ 
 var ObjectUtils = {
     /**
      * jquery对象是否存在
