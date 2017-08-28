@@ -1,11 +1,13 @@
 package com.youdy.mvc.controller.common;
 
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import com.youdy.utils.EnumUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -39,13 +41,24 @@ public class CommonController implements Serializable {
 		if (StringUtils.isEmpty(pageId)) {
 			return StaticPage.NULL_PAGE.getPath();
 		}
-		StaticPage[] staticPages = StaticPage.values();
-		for (StaticPage staticPage : staticPages) {
-			if (StringUtils.equals(pageId, staticPage.getPageId())) {
-				return staticPage.getPath();
-			}
+
+		String Path = "";
+
+		try {
+			Path = EnumUtil.getEnumClazzByKey("pageId", pageId, StaticPage.class).getPath();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
 		}
-		return StaticPage.NULL_PAGE.getPath();
+
+		if (StringUtils.isEmpty(Path)) {
+			Path = pageId.replaceAll("\\." , "/");
+		}
+
+		return Path;
 	}
 
 	/**
@@ -55,7 +68,8 @@ public class CommonController implements Serializable {
 		NULL_PAGE("404", "404", "公共HTML页面"),
 		COMMON_HTML("common", "common/common", "公共HTML页面"),
 		AREA_PAGE("area", "system/area/areaManage", "区域管理页面"),
-		FILE_PAGE("file", "system/file/fileManage", "文件管理页面");
+        FILE_PAGE("file", "system/file/fileManage", "文件管理页面"),
+        CANVAS_PAGE("canvas", "canvas/canvasMng", "画布管理页面");
 		
 		private String pageId;
 		private String path;

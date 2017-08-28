@@ -15,7 +15,7 @@ import com.youdy.mvc.mapper.SysAreaMapper;
 import com.youdy.mvc.service.SysAreaService;
 
 @Service(value="areaService")
-public class SysAreaServiceImpl implements SysAreaService {
+public class SysAreaServiceImpl  extends CommonService implements SysAreaService {
 	
 	@Autowired
 	SysAreaMapper areaMapper;

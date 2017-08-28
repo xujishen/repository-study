@@ -11,12 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.youdy.mvc.controller.common.CommonController;
 
-@RequestMapping(value = "/static")
+@RequestMapping(value = "/static/page/")
 @Controller
 @SuppressWarnings("serial")
 public class StaticController extends CommonController {
 	
-	@RequestMapping(path = "/{pageId}/gotoPage.htmls", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(path = "/{pageId}.htmls", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView gotoPage(HttpServletRequest request, @PathVariable(value = "pageId") String pageId, ModelMap model) {
 		String page = getAccessPagePath(pageId);
 		LOGGER.debug("进入" + page + "页面 !");

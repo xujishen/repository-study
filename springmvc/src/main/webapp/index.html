@@ -9,20 +9,23 @@
 <body>
  what a fuck man!
  	<div>
- 		<button id="areaMng">区域管理</button>
+ 		<button id="areaMng" name="mngBtn" data-value="area">区域管理</button>
  	</div>
  	<div>
- 		<button id="fileMng">文件管理</button>
+ 		<button id="fileMng" name="mngBtn" data-value="file">文件管理</button>
  	</div>
+     <div>
+         <button id="canvasMng" name="mngBtn" data-value="canvas">画布管理</button>
+     </div>
 </body>
 </html>
 <script type="text/javascript">
 $().ready(function() {
-	$('body').on('click', '#areaMng', function() {
-		PageUtil.openPage("area");
-	});
-	$('body').on('click', '#fileMng', function() {
-		PageUtil.openPage("file");
-	});
+
+    $('body').on('click', 'button[name="mngBtn"]', function () {
+		var pageId = $(this).attr('data-value');
+        PageUtil.openPage(pageId);
+    });
+
 });
 </script>

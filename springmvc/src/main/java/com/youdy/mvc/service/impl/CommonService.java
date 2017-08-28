@@ -1,9 +1,9 @@
-package com.youdy.mvc.service;
+package com.youdy.mvc.service.impl;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-interface CommonService {
+public class CommonService {
 
 	public static final String DEFAULT_LOGGER_NAME = "COMMON_LOG";
 	

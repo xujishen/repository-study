@@ -101,7 +101,7 @@ public final class EnumUtil {
             String getter = "get" + StringUtils.left(key, 1).toUpperCase() + StringUtils.right(key, key.length() - 1);
             Method getterMethod = enumClazz.getMethod(getter, new Class[]{});
             V v = (V) getterMethod.invoke(t, new Object[]{});
-            if (v == value || StringUtils.equals(String.valueOf(value), String.valueOf(value))) {
+            if (v == value || StringUtils.equals(String.valueOf(v), String.valueOf(value))) {
                 return t;
             }
         }
