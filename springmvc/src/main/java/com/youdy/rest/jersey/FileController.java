@@ -37,8 +37,8 @@ public class FileController extends CommonController {
 	
 	/**
 	 * 批量上传文件
-	 * @param req
-	 * @param body
+	 * @param disposition
+	 * @param request
 	 * @return
 	 */
 	@Path(value = "/upload/multis")

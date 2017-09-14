@@ -3,8 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Your Test</title>
-	<script type="text/javascript" src="/yourtest/js/common/common.js"></script>	
-	<script type="text/javascript" src="/yourtest/js/common/PageUtil.js"></script>	
 </head>
 <body>
  what a fuck man!
@@ -19,8 +17,9 @@
      </div>
 </body>
 </html>
+<script type="text/javascript" id="commonJs" src="/yourtest/js/common/common.js"></script>
 <script type="text/javascript">
-$().ready(function() {
+$(document).ready(function() {
 
     $('body').on('click', 'button[name="mngBtn"]', function () {
 		var pageId = $(this).attr('data-value');
