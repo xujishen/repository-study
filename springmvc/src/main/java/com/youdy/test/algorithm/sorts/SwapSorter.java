@@ -21,7 +21,7 @@ public class SwapSorter implements Sorter {
             for (int j = i; j > 0; j --) {
                 // 当前元素
                 int curr = arr[j];
-                // 下一个元素(不是右侧的元素, 而是即将和当前元素比较的那个元素)
+                // 下一个元素(不是右侧的元素, 而是即将和当前元素比较的那个元素, 应该是反方向的元素)
                 int next = arr[j - 1];
                 if (next > curr) AlgorithmUtils.swapInt(arr, j - 1, j);
             }
