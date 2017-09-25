@@ -28,9 +28,11 @@ public class BubbleSorter implements Sorter {
 				int next = arr[j];
 				// 如果下一个元素小于当前元素, 则进行交换, 否则不交换, 但对当前元素需要更改为较大的一个.
 				if (curr > next) {
-					AlgorithmUtils.swapInt(arr, j - 1, j); // 此处第一个参数 j - 1很重要
+					curr = arr[j];
+					AlgorithmUtils.swapInt(arr, i, j); // 此处第一个参数 j - 1很重要
+				} else {
+					curr = arr[i];
 				}
-				curr = arr[j]; // curr 的值应该换成arr[j], 因为curr就是最大的那个, 很重要! 无论比较结果如何都应该这么做, 冒泡所在之处.
 			}
 		}
 		long t1 = System.currentTimeMillis();
@@ -41,5 +43,6 @@ public class BubbleSorter implements Sorter {
 	public static void main(String[] args) {
 		Sorter sorter = new BubbleSorter();
 		sorter.sort();
+		System.out.println( -1102852372 < -1706872566);
 	}
 }
