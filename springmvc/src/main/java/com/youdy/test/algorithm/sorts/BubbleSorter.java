@@ -28,21 +28,19 @@ public class BubbleSorter implements Sorter {
 				int next = arr[j];
 				// 如果下一个元素小于当前元素, 则进行交换, 否则不交换, 但对当前元素需要更改为较大的一个.
 				if (curr > next) {
-					curr = arr[j];
-					AlgorithmUtils.swapInt(arr, i, j); // 此处第一个参数 j - 1很重要
+					curr = arr[j]; // 交换之前设置
+					AlgorithmUtils.swapInt(arr, i, j);
 				} else {
 					curr = arr[i];
 				}
 			}
 		}
-		long t1 = System.currentTimeMillis();
-		System.out.println("结束执行冒泡排序, 数组: " + AlgorithmUtils.intArrayToString(arr));
-		System.out.println("耗时: " + (t1 - t0) + "毫秒");
 	}
 
 	public static void main(String[] args) {
 		Sorter sorter = new BubbleSorter();
 		sorter.sort();
-		System.out.println( -1102852372 < -1706872566);
+		System.out.println("冒泡排序后, 数组: " + AlgorithmUtils.intArrayToString(arr));
 	}
+
 }

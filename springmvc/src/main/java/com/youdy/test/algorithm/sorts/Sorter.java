@@ -5,7 +5,7 @@ package com.youdy.test.algorithm.sorts;
  */
 public interface Sorter {
 	// 待排序数组
-    public static int[] arr = {-1102852372,-909537723,-1706872566,1210787185,1629741241,99149254,435931392,1018702613,1822562467};
+    public static int[] arr = {18, 9, -2, 30000, 26, 537723,- 17072566, 12107, 0};
     
     // 数组长度
     public static int len = arr.length;
