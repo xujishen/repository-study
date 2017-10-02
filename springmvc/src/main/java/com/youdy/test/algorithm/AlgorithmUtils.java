@@ -28,9 +28,9 @@ public final class AlgorithmUtils {
 		}
 		String result = "[".intern();
 		for (int i : arr) {
-			result += (i + ",");
+			result += (i + ", ");
 		}
-		return result.substring(0, result.length() - 1) + "]";
+		return result.substring(0, result.length() - 2) + "]";
 		
 	}
 	
