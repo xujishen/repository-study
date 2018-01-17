@@ -1,20 +1,23 @@
 package com.youdy.mvc.service.impl;
 
+import com.google.gson.Gson;
+import com.youdy.bean.SysAreaBean;
+import com.youdy.cache.OneCache;
+import com.youdy.handler.AreaCacheThread;
+import com.youdy.mvc.annotation.ResultHandler;
+import com.youdy.mvc.mapper.SysAreaMapper;
+import com.youdy.mvc.service.SysAreaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import com.youdy.handler.AreaHandler;
-import com.youdy.mvc.annotation.ResultHandler;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.youdy.bean.SysAreaBean;
-import com.youdy.mvc.mapper.SysAreaMapper;
-import com.youdy.mvc.service.SysAreaService;
-
 @Service(value="areaService")
+@Qualifier(value="areaService")
 public class SysAreaServiceImpl  extends CommonService implements SysAreaService {
 	
 	@Autowired
@@ -25,10 +28,17 @@ public class SysAreaServiceImpl  extends CommonService implements SysAreaService
 	 * @param SysAreaBean bean
 	 * @return
 	 */
-	@ResultHandler(clazz = AreaHandler.class, method = "handleAreaResult", args = {Collection.class})
+	@ResultHandler(clazz = AreaCacheThread.class, method = "handleAreaResult", args = {Collection.class})
 	@Override
 	public List<SysAreaBean> searchAreas(SysAreaBean bean) {
 		try {
+			
+			final String sysAreas = OneCache.getCache().get("sysAreas");
+			if (sysAreas != null && sysAreas.length() > 0) {
+				List<SysAreaBean> cacheBean = new Gson().fromJson(sysAreas, List.class);
+			}
+			
+			
 			List<SysAreaBean> list = areaMapper.searchAreas(bean);
 			Comparator<SysAreaBean> comparator = (o1, o2) -> {
 				final Integer id1 = o1.getAreaID();

@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/area")
 public class AreaController extends BaseController {
-
-    @RequestMapping(value = "list" + REST_PATTERN, method = {RequestMethod.GET, RequestMethod.POST})
-    public String getList() {
-        return "";
-    }
-
+	
+	@RequestMapping(value = "list" + REST_PATTERN, method = {RequestMethod.GET, RequestMethod.POST})
+	public String getList() {
+		return "";
+	}
+	
 }

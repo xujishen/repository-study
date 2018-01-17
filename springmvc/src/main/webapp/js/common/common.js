@@ -1,6 +1,5 @@
 var _CONTEXTPATH = '/yourtest';
 var ranNum = Math.random();
-console.log('111')
 var _INCLUDES =	  '<script type="text/javascript" src="' + _CONTEXTPATH + '/js/common/jquery-3.1.1.min.js?num=' + ranNum + '"></script>'
 				+ '<script type="text/javascript" src="' + _CONTEXTPATH + '/js/common/json2.js?num=' + ranNum + '"></script>'
 				+ '<script type="text/javascript" src="' + _CONTEXTPATH + '/js/common/bootstrap-datetimepicker.js?num=' + ranNum + '"></script>'
@@ -13,6 +12,6 @@ var _INCLUDES =	  '<script type="text/javascript" src="' + _CONTEXTPATH + '/js/c
 				+ '<script type="text/javascript" src="' + _CONTEXTPATH + '/js/common/js-md5.js?num=' + ranNum + '"></script>'
 				+ '<script type="text/javascript" src="' + _CONTEXTPATH + '/js/common/console.js?num=' + ranNum + '"></script>'
 				+ '<script type="text/javascript" src="' + _CONTEXTPATH + '/js/common/PageUtil.js?num=' + ranNum + '"></script>';
-document.getElementById("commonJs").innerHTML = _INCLUDES;
+document.write(_INCLUDES);
 
 var EMPTY = '';

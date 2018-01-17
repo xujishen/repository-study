@@ -10,12 +10,12 @@ public class OneCache implements Serializable {
 	
 	private static final long serialVersionUID = 2023093286899452771L;
 
-	private Jedis cache;
+	private static Jedis cache;
 	
 	// 无参构造方法
 	public OneCache() {
 		if (cache == null) {
-			cache = new Jedis("10.128.7.35", 6378);
+			cache = new Jedis("10.128.8.135", 6379);
 			//cache.auth("requirepass");
 			
 			/**
@@ -37,7 +37,7 @@ public class OneCache implements Serializable {
 	}
 	
 	@SuppressWarnings("unused")
-	private Jedis getCache() {
+	public static Jedis getCache() {
 		if (cache == null) {
 			/*JedisPoolConfig config = new JedisPoolConfig();
 			config.setMaxIdle(10);
@@ -45,7 +45,7 @@ public class OneCache implements Serializable {
 			config.setMinIdle(5);
 			JedisPool pool = new JedisPool(config, "10.128.7.111", 6379, 100000);
 			cache = pool.getResource();*/
-			cache = new Jedis("10.128.7.111", 6379);
+			cache = new Jedis("10.128.8.135", 6379);
 			//cache.auth("xujishen");
 		}
 		return cache;
