@@ -5,11 +5,10 @@ import com.youdy.cache.OneCache;
 import com.youdy.enums.CacheDbEnum;
 import com.youdy.enums.CachePrefixEnum;
 import com.youdy.mvc.service.SysAreaService;
+import com.youdy.utils.MapUtil;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.Response;
-import redis.clients.jedis.Transaction;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
@@ -44,29 +43,47 @@ public final class CacheHandler implements Serializable {
 			cache.select(CacheDbEnum.AREA_DB.getDbIndex());
 			final String prefix = CachePrefixEnum.AREA_PREFIX.getPrefix();
 			final String seperate = CachePrefixEnum.AREA_PREFIX.getSeperate();
-			Transaction transc = cache.multi();
 			for (SysAreaBean area : searchAreas) {
 				// 主键
 				Integer id = area.getAreaID();
+				area.setCreateTimeLong(area.getCreateTime().getTime());
 				// 缓存key
 				String cacheKey = prefix + seperate + id;
-				//final List<String> cacheVal = cache.hmget(cacheKey);
-				final Response<List<String>> cacheVal = transc.hmget(cacheKey);
-				if (cacheVal != null && cacheVal.get() != null) {
+				final List<String> cacheVal = cache.hmget(cacheKey, String.valueOf(id));
+				if (cacheVal != null && cacheVal.get(0) != null) {
 					continue;
 				}
 				Map<String, String> areaMap = new HashMap<String, String>();
 				try {
-					BeanUtils.populate(area, areaMap);
+					try {
+						areaMap = BeanUtils.describe(area);
+						areaMap = MapUtil.filterKeyAndValue(areaMap, new MapUtil.Filter() {
+							@Override
+							public boolean doFilter(Object key, Object value) {
+								if (key == null || "class".equals(key)) {
+									return true;
+								}
+								return false;
+							}
+						}, new MapUtil.Filter() {
+							@Override
+							public boolean doFilter(Object key, Object value) {
+								if (value == null || String.valueOf(value).trim().length() == 0) {
+									return true;
+								}
+								return false;
+							}
+						});
+					} catch (NoSuchMethodException e) {
+						e.printStackTrace();
+					}
 				} catch (IllegalAccessException e) {
 					e.printStackTrace();
 				} catch (InvocationTargetException e) {
 					e.printStackTrace();
 				}
-				// cache.hmset(cacheKey, areaMap);
-				transc.hmset(cacheKey, areaMap);
+				cache.hmset(cacheKey, areaMap);
 			}
-			transc.exec();
 		}
 	}
 	

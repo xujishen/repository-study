@@ -1,5 +1,7 @@
 package com.youdy.bean;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -26,6 +28,10 @@ public class CommonBean implements Serializable, Cloneable {
 	private String creatorName;
 	
 	private Date updateTime;
+	
+	private Long createTimeLong;
+	
+	private Long updateTimeLong;
 	
 	private Integer updator;
 	
@@ -126,7 +132,21 @@ public class CommonBean implements Serializable, Cloneable {
 	public void setPageCnt(Integer pageCnt) {
 		this.pageCnt = pageCnt;
 	}
-
+	public Long getCreateTimeLong() {
+		return createTimeLong;
+	}
+	
+	public void setCreateTimeLong(Long createTimeLong) {
+		this.createTimeLong = createTimeLong;
+	}
+	
+	public Long getUpdateTimeLong() {
+		return updateTimeLong;
+	}
+	
+	public void setUpdateTimeLong(Long updateTimeLong) {
+		this.updateTimeLong = updateTimeLong;
+	}
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -145,18 +165,6 @@ public class CommonBean implements Serializable, Cloneable {
 
 	@Override
 	public String toString() {
-		return "CommonBean{" +
-				"id=" + id +
-				", createTime=" + createTime +
-				", creator=" + creator +
-				", creatorName='" + creatorName + '\'' +
-				", updateTime=" + updateTime +
-				", updator=" + updator +
-				", updatorName='" + updatorName + '\'' +
-				", pageNumber=" + pageNumber +
-				", pageCnt=" + pageCnt +
-				", startIndex=" + startIndex +
-				", endIndex=" + endIndex +
-				'}';
+		return ToStringBuilder.reflectionToString(this);
 	}
 }

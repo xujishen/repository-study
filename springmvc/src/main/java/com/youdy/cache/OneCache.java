@@ -1,10 +1,8 @@
 package com.youdy.cache;
 
-import com.youdy.bean.UserBean;
 import redis.clients.jedis.Jedis;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class OneCache implements Serializable {
 	
@@ -109,32 +107,4 @@ public class OneCache implements Serializable {
 		cache.close();
 	}
 	
-	public static void main(String[] args) {
-		OneCache onec = new OneCache();
-		System.out.println(onec.dbSize());
-		onec.close();
-		for (int i = 0; i < 100; i ++) {
-			UserBean ub = new UserBean();
-			ub.setUserId(i);
-			ub.setUserName("user" + i);
-			ub.setAge((float) i);
-			ub.setBirthday(new Date(new Date().getTime() - i * 1000 * 60 * 60 * 24));
-			ub.setEmail("110" + i + "@163.com");
-			ub.setWechatNum("wiii1110" + i);
-			ub.setWechatOid(ub.getWechatNum() + "oid" + i);
-			ub.setGender(i % 2 == 0 ? "0" : "1");
-			ub.setGenderDesc(ub.getGender().equals("0") ? "女" : "男");
-			ub.setQqNum("564391174" + i);
-			ub.setTelephone("13800138000" + i);
-			ub.setCreateTime(new Date());
-			ub.setCreator(0);
-			ub.setCreatorName("admin");
-			//onec.set("user:" + ub.getUserId(), "Hello, I am the key " + i + ", how are u a ?!!  My baby " + i, "nx", "ex", 60 * 60);
-			//onec.set("user:" + ub.getUserId(), SerializeUtil.doSerialize(ub), "nx", "ex", 60 * 60);
-			//byte[] bytes = onec.get("user:" + i);
-			//UserBean u = (UserBean) SerializeUtil.unSerialize(bytes);
-			//System.out.println(u);
-		}
-	}
-
 }
