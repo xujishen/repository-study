@@ -1,5 +1,6 @@
 package com.youdy.cache;
 
+import org.apache.commons.configuration.PropertiesConfiguration;
 import redis.clients.jedis.Jedis;
 
 import java.io.Serializable;
@@ -9,11 +10,31 @@ public class OneCache implements Serializable {
 	private static final long serialVersionUID = 2023093286899452771L;
 
 	private static Jedis cache;
+	private static String REDIS_PROPERTIES_FILE = "classpath:config/redis.properties";
+	private static String host;
+	private static int port;
+	private static String auth;
+	
+	// the static statement
+	static {
+		initPropertis();
+	}
+	
+	static void initPropertis() {
+		try {
+			PropertiesConfiguration pc = new PropertiesConfiguration(REDIS_PROPERTIES_FILE);
+			host = (String) pc.getProperty("redis.host");
+			port = new Integer((String) pc.getProperty("redis.port")).intValue();
+			auth = (String) pc.getProperty("redis.auth");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	// 无参构造方法
 	public OneCache() {
 		if (cache == null) {
-			cache = new Jedis("10.128.8.135", 6379);
+			cache = new Jedis(host, port);
 			//cache.auth("requirepass");
 			
 			/**
@@ -37,14 +58,7 @@ public class OneCache implements Serializable {
 	@SuppressWarnings("unused")
 	public static Jedis getCache() {
 		if (cache == null) {
-			/*JedisPoolConfig config = new JedisPoolConfig();
-			config.setMaxIdle(10);
-			config.setMaxWaitMillis(1000 * 10);
-			config.setMinIdle(5);
-			JedisPool pool = new JedisPool(config, "10.128.7.111", 6379, 100000);
-			cache = pool.getResource();*/
 			cache = new Jedis("10.128.8.135", 6379);
-			//cache.auth("xujishen");
 		}
 		return cache;
 	}

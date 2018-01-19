@@ -25,7 +25,6 @@ public class SysAreaServiceImpl  extends CommonService implements SysAreaService
 
 	/**
 	 * 搜索区域数据
-	 * @param SysAreaBean bean
 	 * @return
 	 */
 	@ResultHandler(clazz = AreaCacheThread.class, method = "handleAreaResult", args = {Collection.class})

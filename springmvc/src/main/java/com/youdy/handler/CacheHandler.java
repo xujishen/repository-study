@@ -46,13 +46,21 @@ public final class CacheHandler implements Serializable {
 			for (SysAreaBean area : searchAreas) {
 				// 主键
 				Integer id = area.getAreaID();
-				area.setCreateTimeLong(area.getCreateTime().getTime());
+				// 当前记录的创建戳
+				Long currCreateTime = area.getCreateTime().getTime();
+				area.setCreateTimeLong(currCreateTime);
 				// 缓存key
 				String cacheKey = prefix + seperate + id;
-				final List<String> cacheVal = cache.hmget(cacheKey, String.valueOf(id));
-				if (cacheVal != null && cacheVal.get(0) != null) {
+				final Map<String, String> cacheVal = cache.hgetAll(cacheKey);
+				if (cacheVal != null && cacheVal.size() <= 0) {
 					continue;
 				}
+				// 缓存中旧的时间戳
+				final Long oldCreateTime = new Long(cacheVal.get("createTimeLong"));
+				if (currCreateTime.compareTo(oldCreateTime) <= 0) {
+					continue;
+				}
+				
 				Map<String, String> areaMap = new HashMap<String, String>();
 				try {
 					try {
