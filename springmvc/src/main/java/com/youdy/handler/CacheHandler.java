@@ -51,16 +51,13 @@ public final class CacheHandler implements Serializable {
 				area.setCreateTimeLong(currCreateTime);
 				// 缓存key
 				String cacheKey = prefix + seperate + id;
-				final Map<String, String> cacheVal = cache.hgetAll(cacheKey);
-				if (cacheVal != null && cacheVal.size() <= 0) {
-					continue;
-				}
+				final Map<String, String> cacheMap = cache.hgetAll(cacheKey);
 				// 缓存中旧的时间戳
-				final Long oldCreateTime = new Long(cacheVal.get("createTimeLong"));
-				if (currCreateTime.compareTo(oldCreateTime) <= 0) {
+				final Long oldCreateTime = new Long(cacheMap.get("createTimeLong") == null ? "0" : cacheMap.get("createTimeLong"));
+				if (cacheMap != null && currCreateTime.compareTo(oldCreateTime) <= 0) {
 					continue;
 				}
-				
+
 				Map<String, String> areaMap = new HashMap<String, String>();
 				try {
 					try {

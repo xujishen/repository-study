@@ -58,7 +58,10 @@ public class OneCache implements Serializable {
 	@SuppressWarnings("unused")
 	public static Jedis getCache() {
 		if (cache == null) {
-			cache = new Jedis("10.128.8.135", 6379);
+			cache = new Jedis(host, port);
+			if (auth != null && !"".equals(auth.trim())) {
+				cache.auth(auth);
+			}
 		}
 		return cache;
 	}

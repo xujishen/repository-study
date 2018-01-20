@@ -39,7 +39,7 @@ public class SysAreaServiceImpl  extends CommonService implements SysAreaService
 			
 			
 			List<SysAreaBean> list = areaMapper.searchAreas(bean);
-			Comparator<SysAreaBean> comparator = (o1, o2) -> {
+			/*Comparator<SysAreaBean> comparator = (o1, o2) -> {
 				final Integer id1 = o1.getAreaID();
 				final Integer id2 = o2.getAreaID();
 				if (id1 > id2) {
@@ -54,7 +54,7 @@ public class SysAreaServiceImpl  extends CommonService implements SysAreaService
 			// 基于 Lamda表达式排序
 			Collections.sort(list, comparator);
 			Collections.sort(list, (o1, o2) -> Integer.compare(o1.getAreaID(), o2.getAreaID()));
-			list.sort(Comparator.comparing(SysAreaBean :: getAreaID));
+			list.sort(Comparator.comparing(SysAreaBean :: getAreaID));*/
 
 			return list;
 		} catch (Exception e) {
