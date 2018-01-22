@@ -73,6 +73,6 @@
 	</bean>
 
 	<!-- 缓存处理类 -->
-	<bean id="cacheHandler" class="com.youdy.handler.CacheHandler" init-method="init" ></bean>
+	<bean id="cacheHandler" class="com.youdy.handler.CacheHandler" init-method="init" scope="singleton"></bean>
 	
 </beans>
