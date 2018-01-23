@@ -59,6 +59,7 @@
 		<property name="maxIdle" value="${db.jdbc.maxIdle}"/>
 		<property name="maxWait" value="${db.jdbc.maxWait}"/>
 		<property name="validationQuery" value="${db.jdbc.validationQuery}" />
+
 	</bean>
 	
 	<!-- 配置mybitasSqlSessionFactoryBean -->
