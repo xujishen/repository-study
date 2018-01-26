@@ -1,5 +1,6 @@
 package com.youdy.utils;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
@@ -11,7 +12,9 @@ import java.util.function.Consumer;
  * 并发无锁队列
  * Created by Su Jishen on 2018/1/23 16:14.
  */
-public class ConcurrentQueue<V> implements  Iterable<V>{
+public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
+	
+	private static final long serialVersionUID = 936804876481746702L;
 	
 	// the head
 	private transient volatile AtomicReference<Node<V>> head;
@@ -139,13 +142,5 @@ public class ConcurrentQueue<V> implements  Iterable<V>{
 	
 	}
 	
-	public static void main(String[] args) {
-		ConcurrentQueue cq = new ConcurrentQueue();
-		cq.offer(6);
-		cq.offer(4);
-		cq.offer(15);
-		final Object pop = cq.pop();
-		System.out.println(pop);
-	}
 	
 }
