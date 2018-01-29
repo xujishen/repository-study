@@ -1,7 +1,10 @@
 package com.youdy.utils;
 
+import org.apache.tools.ant.types.resources.selectors.Size;
+
 import java.io.Serializable;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
@@ -136,7 +139,40 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 	public Iterator<V> iterator() {
 		return null;
 	}
-	
+
+	// the iterator for this queue
+	private class QueItr<V> {
+		int cursor;
+		// if exists the next item
+		public boolean hasNext() {
+		    return Integer.valueOf(size()).compareTo(Integer.valueOf(cursor)) >= 0;
+        }
+
+        // if exists the prev item
+		public boolean hasPrev() {
+		    return cursor > 0;
+        }
+
+        // get the next item from queue
+        public V next() {
+		    if (!hasNext()) {
+		        throw new NoSuchElementException("no next itm in queue!");
+            }
+            for (int i = cursor; i < size(); i ++) {
+
+            }
+            return null;
+        }
+
+        // get the previous item from queue
+        public V prev() {
+            if (!hasPrev()) {
+                throw new NoSuchElementException("no previous itm in queue!");
+            }
+            return null;
+        }
+	}
+
 	@Override
 	public void forEach(Consumer<? super V> action) {
 	
