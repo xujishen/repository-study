@@ -78,6 +78,7 @@ public final class EnumUtil {
      * @param key:       子枚举唯一标识如, code/id
      * @param value:     枚举类中成员属性的值, 此值的类型不确定所有声明了<V>
      * @param enumClazz: 枚举的声明类型
+     * @param returnClazz: 返回类型 默认为 enumClazz
      * @return
      * @throws SecurityException
      * @throws NoSuchMethodException
@@ -86,9 +87,7 @@ public final class EnumUtil {
      * @throws IllegalAccessException
      */
     @SuppressWarnings("unchecked")
-    public static <T, V> T getEnumClazzByKey(String key, V value, Class<T> enumClazz) throws NoSuchMethodException,
-            SecurityException, IllegalAccessException,
-            IllegalArgumentException, InvocationTargetException {
+    public static <T, V, R> T getEnumClazzByKey(String key, V value, Class<T> enumClazz, Class<R> returnClazz) throws Exception {
 
         if (!enumClazz.isEnum()) {
             new Exception("The enumClazz is not an enum ! ");
@@ -98,11 +97,37 @@ public final class EnumUtil {
             new Exception("The enumClazz does not contains any concrete constants ! ");
         }
         for (T t : enums) {
-            String getter = "get" + StringUtils.left(key, 1).toUpperCase() + StringUtils.right(key, key.length() - 1);
+            // 属性首字母
+            String firstLetter = StringUtils.left(key, 1);
+            // 属性剩余字母
+            String otherLetters = StringUtils.right(key, key.length() - 1);
+            // 以大写首字母开头的属性名称
+            String upperFieldName = firstLetter.toUpperCase() + otherLetters;
+            // getter方法名
+            String getter = "get" + upperFieldName;
+            // getter 方法对象
             Method getterMethod = enumClazz.getMethod(getter, new Class[]{});
+            // 反射调用gtter, 回去返回值
             V v = (V) getterMethod.invoke(t, new Object[]{});
             if (v == value || StringUtils.equals(String.valueOf(v), String.valueOf(value))) {
-                return t;
+                // 未指定返回类型, 直接返回枚举
+                /*if (returnClazz == null) {
+                    returnClazz = (Class<R>) enumClazz;*/
+                    return t;
+                //}
+                /*else if (returnClazz == Map.class) {
+                    Map<String, Object> map = new HashMap<String, Object>();
+                    final Field[] enumFields = enumClazz.getDeclaredFields();
+                    for (Field enumField : enumFields) {
+                        final String fieldName = enumField.getName();
+                        final Object fieldValue = enumClazz.getMethod("get" + StringUtils.left(fieldName, 1)
+                                .toUpperCase() + StringUtils.right(fieldName, fieldName.length() - 1), new Class[]{});
+                        map.put(fieldName, fieldValue);
+                        return (R) map;
+                    }
+                } else {
+                    throw new Exception("can not recognized return type: " + returnClazz);
+                }*/
             }
         }
         return null;
