@@ -3,8 +3,7 @@ package com.youdy.utils;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.Serializable;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
@@ -96,7 +95,8 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 			for (; ;) {
 				// the queue is empty
 				if (tail == null || head == null) {
-					head = tail = new AtomicReference<Node<V>>(new Node<V>(v));
+					head = new AtomicReference<Node<V>>(new Node<V>(v));
+                    tail = new AtomicReference<Node<V>>(new Node<V>(v));
 					increment();
 					return;
 				} else {
@@ -105,6 +105,9 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 					if (oldTail != null) {
 						oldTail.next = newNode;
 						newNode.prev = oldTail;
+						if (size() == 1) {
+						    head.get().next = oldTail;
+                        }
 					}
 					// CAS update
 					if (tail.compareAndSet(oldTail, newNode)) {
@@ -159,6 +162,15 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 		    if (!hasNext()) {
 		        throw new NoSuchElementException("no next itm in queue!");
             }
+
+            // 获取首元素
+            Node<V> next = (Node<V>) head.get();
+            for (; cursor < size(); cursor ++) {
+                next = next.next;
+            }
+            return next.value;
+
+            /*
             // 游标小于 size的折半, 正向循环, 否则反向循环
             boolean l2r = cursor < (size() >> 1);
 		    if (l2r) {
@@ -174,7 +186,7 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 				    prev = prev.prev;
 			    }
 			    return prev.value;
-		    }
+		    }*/
         }
 
         // get the previous item from queue
@@ -196,7 +208,15 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 	
 	public static void main(String[] args) {
 		ConcurrentQueue a = new ConcurrentQueue();
+		for (int i = 0; i < 4; i++) {
+			a.offer(i);
+		}
 		final Iterator iterator = a.iterator();
-		
+		List list = new ArrayList(a.size());
+		while (iterator.hasNext()) {
+			Object next = iterator.next();
+			list.add(next);
+		}
+		System.out.println(list);
 	}
 }
