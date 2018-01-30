@@ -1,6 +1,6 @@
 package com.youdy.utils;
 
-import org.apache.tools.ant.types.resources.selectors.Size;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.Serializable;
 import java.util.Iterator;
@@ -133,16 +133,17 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 	}
 	
 	/**
+	 * return an iterator for this queue
 	 *  the overrided method for iteratable
 	 */
 	@Override
 	public Iterator<V> iterator() {
-		return null;
+		return new QueItr<V>();
 	}
 
 	// the iterator for this queue
-	private class QueItr<V> {
-		int cursor;
+	private class QueItr<V> implements Iterator<V> {
+		int cursor = 0;
 		// if exists the next item
 		public boolean hasNext() {
 		    return Integer.valueOf(size()).compareTo(Integer.valueOf(cursor)) >= 0;
@@ -158,10 +159,22 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 		    if (!hasNext()) {
 		        throw new NoSuchElementException("no next itm in queue!");
             }
-            for (int i = cursor; i < size(); i ++) {
-
-            }
-            return null;
+            // 游标小于 size的折半, 正向循环, 否则反向循环
+            boolean l2r = cursor < (size() >> 1);
+		    if (l2r) {
+		    	// 获取首元素
+			    Node<V> next = (Node<V>) head.get();
+			    for (int i = 0; i < cursor; i ++) {
+				    next = next.next;
+			    }
+			    return next.value;
+		    } else { // reverse look up
+			    Node<V> prev = (Node<V>) tail.get();
+		    	for (int i = size() - 1; i > cursor; i --) {
+				    prev = prev.prev;
+			    }
+			    return prev.value;
+		    }
         }
 
         // get the previous item from queue
@@ -169,6 +182,9 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
             if (!hasPrev()) {
                 throw new NoSuchElementException("no previous itm in queue!");
             }
+	        for (int i = cursor; i >= 0; i --) {
+				throw new NotImplementedException();
+	        }
             return null;
         }
 	}
@@ -178,5 +194,9 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 	
 	}
 	
-	
+	public static void main(String[] args) {
+		ConcurrentQueue a = new ConcurrentQueue();
+		final Iterator iterator = a.iterator();
+		
+	}
 }
