@@ -86,7 +86,7 @@ public final class EnumUtil {
      * @throws IllegalAccessException
      */
     @SuppressWarnings("unchecked")
-    public static <T, V> T getEnumClazzByKey(String key, V value, Class<T> enumClazz) throws NoSuchMethodException,
+    public static <T, V> T getEnumInstanceByKey(String key, V value, Class<T> enumClazz) throws NoSuchMethodException,
             InvocationTargetException, IllegalAccessException {
 
         if (!enumClazz.isEnum()) {

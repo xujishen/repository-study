@@ -1,12 +1,5 @@
 package com.youdy.mvc.controller.common;
 
-import java.io.Serializable;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
 import com.youdy.utils.EnumUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -14,6 +7,12 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.ui.ModelMap;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * 通用控制器
@@ -45,7 +44,7 @@ public class CommonController implements Serializable {
 		String Path = "";
 
 		try {
-			Path = EnumUtil.getEnumClazzByKey("pageId", pageId, StaticPage.class).getPath();
+			Path = EnumUtil.getEnumInstanceByKey("pageId", pageId, StaticPage.class).getPath();
 		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
