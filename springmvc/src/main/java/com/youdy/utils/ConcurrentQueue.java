@@ -145,11 +145,12 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 	}
 
 	// the iterator for this queue
+	// you can also add a parameter to itr this queue reversed
 	private class QueItr<V> implements Iterator<V> {
 		int cursor = 0;
 		// if exists the next item
 		public boolean hasNext() {
-		    return Integer.valueOf(size()).compareTo(Integer.valueOf(cursor)) >= 0;
+		    return Integer.valueOf(size()).compareTo(Integer.valueOf(cursor + 1)) >= 0;
         }
 
         // if exists the prev item
@@ -165,28 +166,11 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 
             // 获取首元素
             Node<V> next = (Node<V>) head.get();
-            for (; cursor < size(); cursor ++) {
+            for (int i = 0 ; i <= cursor; i ++) {
                 next = next.next;
             }
+	        cursor ++;
             return next.value;
-
-            /*
-            // 游标小于 size的折半, 正向循环, 否则反向循环
-            boolean l2r = cursor < (size() >> 1);
-		    if (l2r) {
-		    	// 获取首元素
-			    Node<V> next = (Node<V>) head.get();
-			    for (int i = 0; i < cursor; i ++) {
-				    next = next.next;
-			    }
-			    return next.value;
-		    } else { // reverse look up
-			    Node<V> prev = (Node<V>) tail.get();
-		    	for (int i = size() - 1; i > cursor; i --) {
-				    prev = prev.prev;
-			    }
-			    return prev.value;
-		    }*/
         }
 
         // get the previous item from queue
@@ -208,11 +192,14 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 	
 	public static void main(String[] args) {
 		ConcurrentQueue a = new ConcurrentQueue();
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 100; i++) {
+			Random rd = new Random();
+			// a.offer(rd.nextInt(100));
 			a.offer(i);
 		}
 		final Iterator iterator = a.iterator();
 		List list = new ArrayList(a.size());
+		
 		while (iterator.hasNext()) {
 			Object next = iterator.next();
 			list.add(next);
