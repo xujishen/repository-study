@@ -39,15 +39,15 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 	}
 	
 	// the inner node class
-	private static class Node<T>{
+	private static class Node<V>{
 		
 		// the current node value
-		private transient volatile T value;
+		private transient volatile V value;
 		// the next node
-		private transient volatile Node<T> next = null;
+		private transient volatile Node<V> next = null;
 		// the prev node
-		private transient volatile Node<T> prev = null;
-		Node(T value) {
+		private transient volatile Node<V> prev = null;
+		Node(V value) {
 			this.value = value;
 		}
 	};
@@ -193,7 +193,7 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 	public static void main(String[] args) {
 		ConcurrentQueue a = new ConcurrentQueue();
 		for (int i = 0; i < 100; i++) {
-			Random rd = new Random();
+			//Random rd = new Random();
 			// a.offer(rd.nextInt(100));
 			a.offer(i);
 		}
