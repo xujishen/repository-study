@@ -10,6 +10,7 @@ public class TempClass {
     static int loop = 5;
     static long st = 100;
     static FileWriter fileWriter;
+
     static {
         // file.clear();
         try {
@@ -18,7 +19,9 @@ public class TempClass {
             e.printStackTrace();
         }
     }
+
     static AtomicBoolean flag = new AtomicBoolean(false);
+
     public static void main(String[] args) throws InterruptedException, IOException {
         Thread t1 = new Thread(() -> {
             for (int i = 0; i < loop; i++) {

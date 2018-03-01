@@ -25,21 +25,23 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 	
 	// the size of this queue
 	private transient volatile AtomicInteger size = new AtomicInteger(0);
-	
-	// constructrues
-	public ConcurrentQueue() {
-		//this(null);
+
+	public static ConcurrentQueue of() {
+		return new ConcurrentQueue();
 	}
+
+	// constructrues
+	private ConcurrentQueue() {}
 	
 	// init the queue and set to head = tail = value
-	public ConcurrentQueue(V value) {
+	/*public ConcurrentQueue(V value) {
 		Node<V> node = new Node<V>(value);
 		head = new AtomicReference<Node<V>>(node);
 		tail = new AtomicReference<Node<V>>(node);
-	}
+	}*/
 	
 	// the inner node class
-	private static class Node<V>{
+	private static class Node<V> {
 		
 		// the current node value
 		private transient volatile V value;
@@ -81,7 +83,7 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 		}
 	}
 	
-	// decremnet the size value
+	// decrement the size value
 	private void desize() {
 		size.decrementAndGet();
 	}
@@ -97,6 +99,7 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 				if (tail == null || head == null) {
 					head = new AtomicReference<Node<V>>(new Node<V>(v));
                     tail = new AtomicReference<Node<V>>(new Node<V>(v));
+                   // head = tail = new AtomicReference<Node<V>>(new Node<V>(v));
 					increment();
 					return;
 				} else {
@@ -191,12 +194,13 @@ public class ConcurrentQueue<V> implements Serializable, Iterable<V>{
 	}
 	
 	public static void main(String[] args) {
-		ConcurrentQueue a = new ConcurrentQueue();
+		ConcurrentQueue a = ConcurrentQueue.of();
 		for (int i = 0; i < 100; i++) {
 			//Random rd = new Random();
 			// a.offer(rd.nextInt(100));
 			a.offer(i);
 		}
+        System.out.println(a.size());
 		final Iterator iterator = a.iterator();
 		List list = new ArrayList(a.size());
 		
