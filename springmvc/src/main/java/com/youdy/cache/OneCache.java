@@ -31,39 +31,15 @@ public class OneCache implements Serializable {
 		}
 	}
 	
-	// 无参构造方法
-	public OneCache() {
-		if (cache == null) {
-			cache = new Jedis(host, port);
-			//cache.auth("requirepass");
-			
-			/**
-			 * (1). Redis中的字符串是基于SDS(Simple Dynamic String)存储的.
-			 * (2). Sadd是基于
-			 * (3). lpush是基于双端列表存储数据
-			 * (4). hset是基于哈希字典存储数据
-			 * (5). zadd是基于跳跃表
-			 *
-			 * ziplist压缩列表, intset是内存映射数据结构
-			 * 其中intset只能升级不能降级是有序不重复
-			 */
-			cache.set("", "");  // 设置key Value
-			cache.sadd("", "", "");
-			cache.lpush("", "", "");
-			cache.zadd("", 1, "");
-			cache.hset("", "", "");
-		}
-	}
-	
-	@SuppressWarnings("unused")
 	public static Jedis getCache() {
-		if (cache == null) {
+		return new Jedis(host, port);
+		/*if (cache == null) {
 			cache = new Jedis(host, port);
 			if (auth != null && !"".equals(auth.trim())) {
 				cache.auth(auth);
 			}
 		}
-		return cache;
+		return cache;*/
 	}
 	
 	/**

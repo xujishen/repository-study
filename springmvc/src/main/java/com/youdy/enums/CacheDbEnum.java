@@ -6,8 +6,10 @@ package com.youdy.enums;
  */
 public enum CacheDbEnum {
 	
-	AREA_DB(0, "区域DB", "存储区域的数据库");
-	
+	AREA_DB(0, "区域DB", "存储区域的数据库"),
+
+	AREA_ID_DB(1, "区域ID", "存储区域ID的数据库");
+
 	private int dbIndex;
 	private String dbName, desc;
 	

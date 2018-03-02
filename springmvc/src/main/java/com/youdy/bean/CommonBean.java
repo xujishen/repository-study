@@ -45,6 +45,16 @@ public class CommonBean implements Serializable, Cloneable {
 
 	private Integer endIndex = 10;
 
+	private Integer cacheDbNum = 0;
+
+	public Integer getCacheDbNum() {
+		return cacheDbNum;
+	}
+
+	public void setCacheDbNum(Integer cacheDbNum) {
+		this.cacheDbNum = cacheDbNum;
+	}
+
 	public Integer getStartIndex() {
 		return startIndex;
 	}

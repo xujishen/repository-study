@@ -6,14 +6,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Created by Su Jishen on 2018/1/22 15:40.
  */
-public class IocUtil {
+public final class IocUtil {
 	
 	static ApplicationContext applicationContext;
 	
 	static {
 		try {
 			applicationContext = new ClassPathXmlApplicationContext("classpath*:config/spring-servlet.xml");
-			System.out.println("applicationContext: " + applicationContext);
 		} catch (Exception e) {
 			e.printStackTrace();;
 		}

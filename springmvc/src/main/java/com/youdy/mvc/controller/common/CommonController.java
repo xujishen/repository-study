@@ -33,7 +33,9 @@ public class CommonController implements Serializable {
 	public static final int EXCEPTION_CODE = -1;	// controller请求异常返回代码
 	
 	public static final int SUCCESS_CODE = 1;		// controller请求成功返回代码
-	
+
+	public static final int ERROR_CODE = 1;			// controller请求失败代码
+
 	public static final Log LOGGER = LogFactory.getLog(DEFAULT_LOGGER_NAME);
 	
 	public String getAccessPagePath(String pageId) {

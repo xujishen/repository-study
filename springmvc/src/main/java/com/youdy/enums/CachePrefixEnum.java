@@ -8,7 +8,7 @@ package com.youdy.enums;
 public enum CachePrefixEnum {
 	
 	AREA_PREFIX("Area", "区域前缀", "-");
-	
+
 	private String prefix, name, seperate;  // 前缀, 名称, 分隔符
 	CachePrefixEnum(final String prefix, final String name, final String desc) {
 		this.prefix = prefix;

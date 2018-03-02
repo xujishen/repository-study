@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.youdy.enums.CacheDbEnum;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -52,16 +53,14 @@ public class SysAreaController extends CommonController {
 			if (StringUtils.isNotEmpty(body))
 			{
 				SysAreaBean areaBean = (SysAreaBean) new Gson().fromJson(body, SysAreaBean.class);
-				
+				areaBean.setCacheDbNum(CacheDbEnum.AREA_DB.getDbIndex());
 				List<SysAreaBean> list = areaService.searchAreas(areaBean);
-
-				Stream.of(list).forEach(area -> LOGGER.info("当前区域: " + area));
 
 				resultMap.put("data", list);
 			}
 			else
 			{
-				LOGGER.info("searchAreaData.htmmls参数缺失, body为空! ");
+				LOGGER.info("searchAreaData.htmls参数缺失, body为空! ");
 			}
 			resultMap.put("code", SUCCESS_CODE);
 			resultMap.put("msg", "查询数据成功");
