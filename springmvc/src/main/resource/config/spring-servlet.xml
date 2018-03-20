@@ -17,6 +17,8 @@
 	<!-- 注解驱动 -->
 	<mvc:annotation-driven/>
 	<mvc:default-servlet-handler/>
+
+	<!-- 默认开启基于JDK动态代理事务 -->
 	<tx:annotation-driven/>
 	
 	<!-- 资源配置 (此配置下的文件路径不会被spring mvc所拦截) -->
