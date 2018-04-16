@@ -124,19 +124,17 @@ public class LinkTable<V> implements Serializable, Iterable<V> {
             if (this.head == null || this.head.next == null) {
                 return;
             }
-            // the current head node
-            Node node = this.head;
-            Node temp = null;
-            //Node next;
-            while (/*(next = node.next)*/node != null) {
-                temp = node.prev;
-                node.prev = node.next;
-                node.next = temp;
-                node = node.prev;
+            Node node = this.tail;
+            while (node != null) {
+                Node temp1 = node.next;
+                node.next = node.prev;
+                node.prev = temp1;
+                node = node.next;
             }
             // exchange head and tail
+            Node head = this.head;
             this.head = this.tail;
-            this.tail = temp;
+            this.tail = head;
         } catch (Exception e) {
             e.printStackTrace();
         }
