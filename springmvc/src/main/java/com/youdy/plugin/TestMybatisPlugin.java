@@ -22,7 +22,7 @@ public class TestMybatisPlugin implements Interceptor, Serializable {
     public Object intercept(Invocation invocation) throws Throwable {
         final Object target = invocation.getTarget();
         final Method method = invocation.getMethod();
-        Object[] args = invocation.getArgs();
+        final Object[] args = invocation.getArgs();
         System.out.println("what a fucking man !! ");
         return invocation.proceed();
     }
@@ -30,6 +30,8 @@ public class TestMybatisPlugin implements Interceptor, Serializable {
     @Override
     public Object plugin(Object o) {
     	System.out.println((o));
+    	// o ==> 某一个 #Executor, #StatementHandler, #ResultSetHandler, ParameterHandler
+        // this ==> 实现了 Interceptor接口的实现类
         return Plugin.wrap(o, this);
     }
 
