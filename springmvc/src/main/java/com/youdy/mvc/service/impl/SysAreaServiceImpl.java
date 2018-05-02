@@ -1,6 +1,7 @@
 package com.youdy.mvc.service.impl;
 
 import com.youdy.bean.SysAreaBean;
+import com.youdy.mvc.annotation.Lockable;
 import com.youdy.mvc.mapper.SysAreaMapper;
 import com.youdy.mvc.service.SysAreaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ public class SysAreaServiceImpl  extends CommonService implements SysAreaService
 	 * 搜索区域数据
 	 * @return
 	 */
+	@Lockable(key = "1111", value = "122")
 	@Override
 	public List<SysAreaBean> searchAreas(SysAreaBean bean) {
 		try {
