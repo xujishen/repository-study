@@ -10,7 +10,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {SysAreaServiceImpl.class})
+// locations 与 classes 只配置一个
+@ContextConfiguration(/*classes={SysAreaServiceImpl.class}, */locations={"classpath:config/spring-servlet.xml"})
 public class SysAreaServiceImplTest {
 
     @Autowired
