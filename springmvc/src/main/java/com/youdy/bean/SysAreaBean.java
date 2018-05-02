@@ -1,5 +1,6 @@
 package com.youdy.bean;
 
+import lombok.Data;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
@@ -15,10 +16,10 @@ import java.util.Calendar;
  * @Copyright (C) 2008-2016 www.oneapm.com. all rights reserved.
  *
  */
+@Data
 public class SysAreaBean extends CommonBean implements Comparable<SysAreaBean> {
 
 	private static final long serialVersionUID = -5505278375125054618L;
-	
 	private Integer areaID;
 	private String areaName;
 	private Integer areaCode;
@@ -37,33 +38,7 @@ public class SysAreaBean extends CommonBean implements Comparable<SysAreaBean> {
 
 	public void setAreaLevelName(String areaLevelName) {
 	}
-	public Integer getAreaID() {
-		return areaID;
-	}
-	public void setAreaID(Integer areaID) {
-		this.areaID = areaID;
-	}
-	public String getAreaName() {
-		return areaName;
-	}
-	public void setAreaName(String areaName) {
-		this.areaName = areaName;
-	}
-	public Integer getAreaCode() {
-		return areaCode;
-	}
-	public void setAreaCode(Integer areaCode) {
-		this.areaCode = areaCode;
-	}
-	public Integer getParentID() {
-		return parentID;
-	}
-	public void setParentID(Integer parentID) {
-		this.parentID = parentID;
-	}
-	public Integer getAreaLevel() {
-		return areaLevel;
-	}
+
 	public void setAreaLevel(Integer areaLevel) {
 		this.areaLevel = areaLevel;
 		if (this.areaLevel == null) {
@@ -80,25 +55,7 @@ public class SysAreaBean extends CommonBean implements Comparable<SysAreaBean> {
 			this.areaLevelName = "";
 		}
 	}
-	public Integer getCountryID() {
-		return countryID;
-	}
-	public void setCountryID(Integer countryID) {
-		this.countryID = countryID;
-	}
-	public Short getStatus() {
-		return status;
-	}
-	public void setStatus(Short status) {
-		this.status = status;
-	}
-	
-	public String getAreaSearchName() {
-		return areaSearchName;
-	}
-	public void setAreaSearchName(String areaSearchName) {
-		this.areaSearchName = areaSearchName;
-	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
