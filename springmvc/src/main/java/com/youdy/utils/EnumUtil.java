@@ -109,7 +109,7 @@ public final class EnumUtil {
             Method getterMethod = enumClazz.getMethod(getter, new Class[]{});
             // 反射调用gtter, 回去返回值
             V v = (V) getterMethod.invoke(t, new Object[]{});
-            if (v == value || StringUtils.equals(String.valueOf(v), String.valueOf(value))) {
+            if (v == value || StringUtils.equals(String.valueOf(v), String.valueOf(value)) || v.equals(value)) {
                 return t;
             }
         }
