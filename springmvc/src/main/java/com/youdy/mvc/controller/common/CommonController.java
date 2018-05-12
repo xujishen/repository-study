@@ -70,8 +70,9 @@ public class CommonController implements Serializable {
 		COMMON_HTML("common", "common/common", "公共HTML页面"),
 		AREA_PAGE("area", "system/area/areaManage", "区域管理页面"),
         FILE_PAGE("file", "system/file/fileManage", "文件管理页面"),
-        CANVAS_PAGE("canvas", "canvas/canvasMng", "画布管理页面");
-		
+        CANVAS_PAGE("canvas", "canvas/canvasMng", "画布管理页面"),
+		CACHE_PAGE("cache", "cache/cacheMng", "缓存管理页面");
+
 		private String pageId;
 		private String path;
 		private String comment;
