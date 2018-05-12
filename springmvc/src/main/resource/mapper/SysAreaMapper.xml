@@ -20,7 +20,6 @@
 		<if test="areaSearchName != null and areaSearchName != ''">
 			AND t.areaName like CONCAT('%', #{areaSearchName}, '%')
 		</if>
-		LIMIT #{startIndex}, #{endIndex}
 	</select>
 	
 </mapper>

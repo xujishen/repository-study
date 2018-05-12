@@ -127,9 +127,13 @@ public final class CacheManager {
 
     public static Map<String, String> getArea(String cacheKey) {
         final Jedis cache = OneCache.getCache();
-        // 获取 0 号数据库
-        cache.select(CacheDbEnum.AREA_DB.getDbIndex());
-        return cache.hgetAll(cacheKey);
+        try {
+            // 获取 0 号数据库
+            cache.select(CacheDbEnum.AREA_DB.getDbIndex());
+            return cache.hgetAll(cacheKey);
+        } finally {
+            cache.close();
+        }
     }
 
     public static void saveArea(String cacheKey, Map<String, String> areaMap) {
@@ -137,6 +141,7 @@ public final class CacheManager {
         // 获取 0 号数据库
         cache.select(CacheDbEnum.AREA_DB.getDbIndex());
         cache.hmset(cacheKey, areaMap);
+        cache.close();
     }
 
     /**
@@ -150,8 +155,12 @@ public final class CacheManager {
             return;
         }
         Jedis cache = OneCache.getCache();
-        cache.select(CacheDbEnum.AREA_ID_DB.getDbIndex());
-        cache.zadd("AreaIDs", score, areaCacheKey);
+        try {
+            cache.select(CacheDbEnum.AREA_ID_DB.getDbIndex());
+            cache.zadd("AreaIDs", score, areaCacheKey);
+        } finally {
+            cache.close();
+        }
     }
 
     /**

@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.github.pagehelper.PageHelper;
 import com.youdy.enums.CacheDbEnum;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,7 @@ public class SysAreaController extends CommonController {
 			{
 				SysAreaBean areaBean = (SysAreaBean) new Gson().fromJson(body, SysAreaBean.class);
 				areaBean.setCacheDbNum(CacheDbEnum.AREA_DB.getDbIndex());
+				PageHelper.startPage(areaBean.getPageNum(), areaBean.getPageSize());
 				List<SysAreaBean> list = areaService.searchAreas(areaBean);
 
 				resultMap.put("data", list);

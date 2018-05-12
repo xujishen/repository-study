@@ -1,5 +1,7 @@
 package com.youdy.bean;
 
+import lombok.Data;
+import lombok.ToString;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 import java.io.Serializable;
@@ -15,6 +17,8 @@ import java.util.Date;
  * @Copyright (C) 2008-2016 www.oneapm.com. all rights reserved.
  *
  */
+@Data
+@ToString
 public class CommonBean implements Serializable, Cloneable {
 
 	private static final long serialVersionUID = -7063485676785246066L;
@@ -37,9 +41,9 @@ public class CommonBean implements Serializable, Cloneable {
 	
 	private String updatorName;
 	
-	private Integer pageNumber;
+	private Integer pageNum = 1;
 	
-	private Integer pageCnt;
+	private Integer pageSize = 10;
 
 	private  Integer startIndex = 0;
 
@@ -47,116 +51,6 @@ public class CommonBean implements Serializable, Cloneable {
 
 	private Integer cacheDbNum = 0;
 
-	public Integer getCacheDbNum() {
-		return cacheDbNum;
-	}
-
-	public void setCacheDbNum(Integer cacheDbNum) {
-		this.cacheDbNum = cacheDbNum;
-	}
-
-	public Integer getStartIndex() {
-		return startIndex;
-	}
-
-	public Integer getEndIndex() {
-		return endIndex;
-	}
-
-	public void setStartIndex(Integer startIndex) {
-		this.startIndex = startIndex;
-	}
-
-	public void setEndIndex(Integer endIndex) {
-		this.endIndex = endIndex;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Date getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
-
-	public Integer getCreator() {
-		return creator;
-	}
-
-	public void setCreator(Integer creator) {
-		this.creator = creator;
-	}
-
-	public String getCreatorName() {
-		return creatorName;
-	}
-
-	public void setCreatorName(String creatorName) {
-		this.creatorName = creatorName;
-	}
-
-	public Date getUpdateTime() {
-		return updateTime;
-	}
-
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
-
-	public Integer getUpdator() {
-		return updator;
-	}
-
-	public void setUpdator(Integer updator) {
-		this.updator = updator;
-	}
-
-	public String getUpdatorName() {
-		return updatorName;
-	}
-
-	public void setUpdatorName(String updatorName) {
-		this.updatorName = updatorName;
-	}
-
-	public Integer getPageNumber() {
-		return pageNumber;
-	}
-
-	public void setPageNumber(Integer pageNumber) {
-		this.pageNumber = pageNumber;
-	}
-
-	public Integer getPageCnt() {
-		return pageCnt;
-	}
-
-	public void setPageCnt(Integer pageCnt) {
-		this.pageCnt = pageCnt;
-	}
-	public Long getCreateTimeLong() {
-		return createTimeLong;
-	}
-	
-	public void setCreateTimeLong(Long createTimeLong) {
-		this.createTimeLong = createTimeLong;
-	}
-	
-	public Long getUpdateTimeLong() {
-		return updateTimeLong;
-	}
-	
-	public void setUpdateTimeLong(Long updateTimeLong) {
-		this.updateTimeLong = updateTimeLong;
-	}
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;

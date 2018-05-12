@@ -15,8 +15,11 @@
     </typeAliases>
     
     <plugins>
-        <plugin interceptor="com.youdy.plugin.TestMybatisPlugin">
-            <property name="agr1" value="111"></property>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+
         </plugin>
+        <!--<plugin interceptor="com.youdy.plugin.TestMybatisPlugin">
+            <property name="agr1" value="111"></property>
+        </plugin>-->
     </plugins>
 </configuration>
