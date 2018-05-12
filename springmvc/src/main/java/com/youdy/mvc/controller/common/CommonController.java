@@ -76,7 +76,7 @@ public class CommonController implements Serializable {
 		private String pageId;
 		private String path;
 		private String comment;
-		StaticPage(final String pageId, final String path, final String comment) {
+		private StaticPage(final String pageId, final String path, final String comment) {
 			this.path = path;
 			this.comment = comment;
 			this.pageId = pageId;
@@ -84,22 +84,13 @@ public class CommonController implements Serializable {
 		public String getPath() {
 			return path;
 		}
-		public void setPath(String path) {
-			this.path = path;
-		}
 		public String getComment() {
 			return comment;
-		}
-		public void setComment(String comment) {
-			this.comment = comment;
 		}
 		public String getPageId() {
 			return pageId;
 		}
-		public void setPageId(String pageId) {
-			this.pageId = pageId;
-		}
-		
+
 	}
 
 	public void requestToModel(HttpServletRequest request, ModelMap model) {
