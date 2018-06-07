@@ -406,12 +406,13 @@
             <version>5.0.3</version>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok-maven</artifactId>
             <version>${lombok-maven.version}</version>
+            <type>pom</type>
             <scope>provided</scope>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
