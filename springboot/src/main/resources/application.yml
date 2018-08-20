@@ -1,0 +1,39 @@
+server:
+    port: 8088
+    servlet:
+        context-path: /yourboot
+    tomcat:
+        uri-encoding: UTF-8
+spring:
+    datasource:
+        name:datasource1
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        filters: stat,log4j2
+        initialSize: 5
+        maxActive: 20
+        maxPoolPreparedStatementPerConnectionSize: 20
+        maxWait: 60000
+        minEvictableIdleTimeMillis: 300000
+        minIdle: 5
+        password:
+        poolPreparedStatements: true
+        testOnBorrow: false
+        testOnReturn: false
+        testWhileIdle: true
+        timeBetweenEvictionRunsMillis: 60000
+        url: jdbc:mysql://127.0.0.1:3306/yourstudy?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+        useGlobalDataSourceStat: true
+        username: root
+        validationQuery: SELECT 1 FROM DUAL
+    http:
+        encoding:
+            charset: UTF-8
+            enabled: true
+            force: true
+    jmx:
+        default-domain: yourboot
+    mvc:
+        view:
+            prefix: /WEB-INF/views/htmls/
+            suffix: .html
