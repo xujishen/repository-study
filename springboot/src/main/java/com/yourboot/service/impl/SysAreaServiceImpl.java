@@ -4,14 +4,13 @@ import com.yourboot.bean.SysAreaBean;
 import com.yourboot.mapper.SysAreaMapper;
 import com.yourboot.service.SysAreaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service(value="areaService")
-@Qualifier(value="areaService")
-public class SysAreaServiceImpl  extends CommonService implements SysAreaService {
+@Service/*(value="areaService")*/
+/*@Qualifier(value="areaService")*/
+public class SysAreaServiceImpl extends CommonService implements SysAreaService {
 	
 	@Autowired
 	SysAreaMapper areaMapper;

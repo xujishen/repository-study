@@ -9,9 +9,9 @@
 
     <typeAliases>
     	<!-- 用户 -->
-        <typeAlias alias="UserBean" type="com.youdy.bean.UserBean"/>
+        <typeAlias alias="UserBean" type="com.yourboot.bean.UserBean"/>
     	<!-- 区域 -->
-        <typeAlias alias="SysAreaBean" type="com.youdy.bean.SysAreaBean"/>
+        <typeAlias alias="SysAreaBean" type="com.yourboot.bean.SysAreaBean"/>
     </typeAliases>
     
     <plugins>

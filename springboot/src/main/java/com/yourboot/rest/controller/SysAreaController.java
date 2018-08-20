@@ -29,7 +29,7 @@ public class SysAreaController extends CommonController {
 	private static final long serialVersionUID = -5638731468974812824L;
 	
 	@Autowired
-	@Qualifier(value="areaService")
+	//@Qualifier(value="areaService")
 	SysAreaService areaService;
 	
 	@RequestMapping(value = "/getAreaTypes")
