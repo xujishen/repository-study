@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>区域管理</title>
+</head>
+<body>
+	<!-- 操作区 -->
+	<span>操作区</span>
+	<div id="areaSearch">
+		<table>
+			<tr>
+				<td>城市名称: </td>
+				<td><input type="text" id="s_areaName" name="s_areaName" /></td>
+				
+				<td>城市级别: </td>
+				<td>
+					<select id="s_areaLevel" name="s_areaName">
+						<option value="">--全部--</option>
+						<option value="1">省(直辖市)</option>
+						<option value="2">市</option>
+						<option value="3">区(县)</option>
+						<option value="4">乡镇(街道)</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button id="searchButton">查询</button>
+				</td>
+				<td>
+					<button id="createButton">新建</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<!-- 显示区 -->
+	<span>区域列表</span>
+	<div id="areaList">
+		<table style="border: 1;">
+			<thead>
+				<th><input type="checkbox" id="areaList_checkAll" /></th>
+				<th>序号</th>
+				<th>城市名称</th>
+				<th>城市类型</th>
+				<th>当前状态</th>
+				<th>创建时间</th>
+			</thead>
+			
+			<tbody id="areaList_tbody">
+			
+			</tbody>
+		</table>
+	</div>
+
+	<template id="createDiv">
+		<table id="createTable">
+			<tr>
+				<td>名称: </td>
+				<td>
+					<input type="text" id="areaName" value=""/>
+				</td>
+
+				<td>类型: </td>
+				<td>
+					<select id="areaLevel">
+						<option value="1" selected="selected">省(直辖市)</option>
+						<!--<option value="2"></option>
+						<option value="3"></option>
+						<option value="4"></option>-->
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button id="saveButton">确定</button>
+				</td>
+			</tr>
+		</table>
+	</template>
+	<script type="text/javascript" src="/yourtest/js/common/common.js"></script>
+	<script type="text/javascript" src="/yourtest/js/system/Area.js"></script>
+</body>
+</html>
