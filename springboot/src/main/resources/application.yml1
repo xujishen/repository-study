@@ -16,7 +16,7 @@ spring:
         maxWait: 60000
         minEvictableIdleTimeMillis: 300000
         minIdle: 5
-        password:
+        password: ''
         poolPreparedStatements: true
         testOnBorrow: false
         testOnReturn: false

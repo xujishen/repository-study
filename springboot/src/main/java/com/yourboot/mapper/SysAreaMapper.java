@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface SysAreaMapper {
 	
-	public List<SysAreaBean> searchAreas(SysAreaBean bean);
+	List<SysAreaBean> searchAreas(SysAreaBean bean);
 }
