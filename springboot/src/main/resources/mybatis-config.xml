@@ -14,12 +14,9 @@
         <typeAlias alias="SysAreaBean" type="com.yourboot.bean.SysAreaBean"/>
     </typeAliases>
     
-    <plugins>
+    <!--<plugins>
         <plugin interceptor="com.github.pagehelper.PageInterceptor">
 
         </plugin>
-        <!--<plugin interceptor="com.youdy.plugin.TestMybatisPlugin">
-            <property name="agr1" value="111"></property>
-        </plugin>-->
-    </plugins>
+    </plugins>-->
 </configuration>
