@@ -14,9 +14,9 @@
         <typeAlias alias="SysAreaBean" type="com.yourboot.bean.SysAreaBean"/>
     </typeAliases>
     
-    <!--<plugins>
+    <plugins>
         <plugin interceptor="com.github.pagehelper.PageInterceptor">
 
         </plugin>
-    </plugins>-->
+    </plugins>
 </configuration>
