@@ -5,6 +5,7 @@ import com.yourboot.mapper.SysAreaMapper;
 import com.yourboot.service.SysAreaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class SysAreaServiceImpl extends CommonService implements SysAreaService 
 	 * 搜索区域数据
 	 * @return
 	 */
+	@Transactional
 	@Override
 	public List<SysAreaBean> searchAreas(SysAreaBean bean) {
 		try {
