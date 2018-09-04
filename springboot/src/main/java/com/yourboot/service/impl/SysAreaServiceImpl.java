@@ -24,7 +24,6 @@ public class SysAreaServiceImpl extends CommonService implements SysAreaService 
 	@Override
 	public List<SysAreaBean> searchAreas(SysAreaBean bean) {
 		try {
-			
 			List<SysAreaBean> list = areaMapper.searchAreas(bean);
 			/*Comparator<SysAreaBean> comparator = (o1, o2) -> {
 				final Integer id1 = o1.getAreaID();
