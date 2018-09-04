@@ -2,6 +2,8 @@ package com.yourboot.algorithm.sorts;
 
 import com.yourboot.algorithm.AlgorithmUtils;
 
+import java.time.Instant;
+
 /**
  * Created By shen on 2017-5-7 0:21
  * 交换插入排序 - 升序
@@ -14,7 +16,7 @@ public class InsertionSorter implements Sorter {
     @Override
     public void sort() {
         System.out.println("开始执行交换排序, 数组: " + AlgorithmUtils.intArrayToString(arr));
-		long t0 = System.currentTimeMillis();
+		long t0 = Instant.now().getNano();
         // 从首位开始循环数组
         for (int i = 1; i < len; i ++) {
             // 从当前位置向反方向循环
@@ -28,8 +30,8 @@ public class InsertionSorter implements Sorter {
                 }
             }
         }
-		long t1 = System.currentTimeMillis();
-        System.out.println("结束执行交换排序, 数组: " + AlgorithmUtils.intArrayToString(arr) + ", 耗时: " + (t1 - t0) + "毫秒");
+		long t1 = Instant.now().getNano();
+        System.out.println("结束执行交换排序, 数组: " + AlgorithmUtils.intArrayToString(arr) + ", 耗时: " + (t1 - t0) + "纳秒");
     }
 
     public static void main(String[] args) {
