@@ -55,7 +55,7 @@
     <!-- 事务配置 -->
     <tx:advice id="txAdvice" transaction-manager="txManager">
         <tx:attributes>
-            <tx:method name="*" propagation="REQUIRED" isolation="DEFAULT"/>
+            <tx:method name="com.yourboot.service.impl.*.*" propagation="REQUIRED" isolation="DEFAULT"/>
         </tx:attributes>
     </tx:advice>
     <!-- 事务切面 -->

@@ -21,6 +21,7 @@ import java.util.Date;
 @ToString
 public class CommonBean implements Serializable, Cloneable {
 
+	// for serializable
 	private static final long serialVersionUID = -7063485676785246066L;
 
 	private Integer id;
