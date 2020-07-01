@@ -13,7 +13,7 @@
         <spring.version>5.0.8.RELEASE</spring.version>
         <mybatis.version>3.4.1</mybatis.version>
         <mybatis.spring.version>1.3.0</mybatis.spring.version>
-        <mysql.servsion>6.0.3</mysql.servsion>
+        <mysql.servsion>8.0.16</mysql.servsion>
         <cglib.version>3.2.4</cglib.version>
         <netty.version>4.0.0.Alpha8</netty.version>
         <httpclient.version>4.5.2</httpclient.version>
