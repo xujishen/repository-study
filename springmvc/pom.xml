@@ -30,7 +30,7 @@
         <jsp-api>2.0</jsp-api>
         <commons-logging>1.2</commons-logging>
         <druid>1.0.26</druid>
-        <libthrift.version>0.9.3</libthrift.version>
+        <libthrift.version>0.14.0</libthrift.version>
         <jersey-server.version>1.19</jersey-server.version>
         <jersey-client.version>1.19</jersey-client.version>
         <jersey-multipart.version>1.19</jersey-multipart.version>
