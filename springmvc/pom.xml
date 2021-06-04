@@ -16,7 +16,7 @@
         <mysql.servsion>6.0.3</mysql.servsion>
         <cglib.version>3.2.4</cglib.version>
         <netty.version>4.0.0.Alpha8</netty.version>
-        <httpclient.version>4.5.2</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
         <gson.version>2.7</gson.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <log4j.version>1.2.17</log4j.version>
