@@ -37,7 +37,7 @@
         <jersey-client.version>1.19</jersey-client.version>
         <jersey-multipart.version>1.19</jersey-multipart.version>
         <jersey-spring.version>1.19</jersey-spring.version>
-        <zookeeper.version>3.4.0</zookeeper.version>
+        <zookeeper.version>3.4.14</zookeeper.version>
         <json-lib.version>2.4</json-lib.version>
         <aspectj.version>1.9.1</aspectj.version>
         <lombok-maven.version>1.16.20.0</lombok-maven.version>
